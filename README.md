@@ -2,7 +2,7 @@
 
 > A gastronomic venue discovery and reservation mobile app designed for diverse dining needs.
 
-**[→ View Live Portfolio Case Study](https://your-username.github.io/barbook-ux-casestudy)**  
+**[→ View Live Portfolio Case Study](https://manticofmiri.github.io/barbook-repo/)**  
 **[→ View Figma Prototype](https://www.figma.com/design/QZsJyIFc6EkSKf1G9WcuQc/UX-UI-Miriam)**
 
 ---
