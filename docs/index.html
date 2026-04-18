@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAR.BOOK — UX/UI Case Study · Miriam Costa Manticof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mauve: #BF8DBC;
+    --mauve-light: #E8D0E7;
+    --mauve-dark: #8A5E87;
+    --teal: #557174;
+    --teal-light: #D4E3E4;
+    --teal-dark: #3A5053;
+    --ink: #242424;
+    --ink-soft: #3D3D3D;
+    --fog: #F5F2F0;
+    --cream: #FAFAF8;
+    --line: #E8E4E0;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 18px; letter-spacing: -0.5px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--ink-soft); text-decoration: none; letter-spacing: 0.02em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--mauve-dark); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+  }
+  .hero-left {
+    background: var(--ink);
+    padding: 80px 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: var(--mauve);
+    opacity: 0.12;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mauve);
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(64px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  .hero-title em { color: var(--mauve); font-style: italic; }
+  .hero-desc {
+    font-size: 16px; font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 380px; line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .hero-meta { display: flex; gap: 32px; flex-wrap: wrap; }
+  .hero-meta-item label { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve); margin-bottom: 4px; }
+  .hero-meta-item span { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 400; }
+
+  .hero-right {
+    background: var(--mauve-light);
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 48px;
+    position: relative;
+  }
+  .phone-mockup {
+    width: 240px;
+    background: var(--white);
+    border-radius: 36px;
+    padding: 0;
+    box-shadow: 0 40px 80px rgba(36,36,36,0.2), 0 8px 24px rgba(36,36,36,0.12);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-status-bar {
+    background: var(--white);
+    padding: 12px 20px 8px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink);
+  }
+  .phone-screen {
+    background: var(--white);
+    padding: 20px 16px;
+  }
+  .app-logo-screen {
+    text-align: center;
+    padding: 24px 0 16px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 20px;
+    color: var(--ink); letter-spacing: -0.5px;
+  }
+  .app-hero-img {
+    width: 100%; height: 120px;
+    background: linear-gradient(135deg, var(--mauve-light) 0%, var(--teal-light) 100%);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 48px;
+  }
+  .app-tagline {
+    font-size: 13px; color: var(--ink-soft);
+    text-align: center; line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .onboard-dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 16px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+  .dot.active { background: var(--ink); width: 18px; border-radius: 4px; }
+  .phone-nav {
+    border-top: 1px solid var(--line);
+    padding: 12px 0 8px;
+    display: flex; justify-content: space-around; align-items: center;
+  }
+  .nav-icon { font-size: 18px; color: var(--ink-soft); }
+  .nav-icon.active { color: var(--mauve-dark); }
+
+  /* ─── GENERAL SECTION ─── */
+  section { padding: 100px 0; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+  .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 48px; }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--mauve-dark);
+    margin-bottom: 20px;
+  }
+  .section-label::before {
+    content: '';
+    display: block; width: 24px; height: 1px;
+    background: var(--mauve);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -1px; color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .section-title em { color: var(--mauve-dark); font-style: italic; }
+  .section-body {
+    font-size: 17px; font-weight: 300;
+    color: var(--ink-soft); line-height: 1.85;
+    max-width: 640px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider { border: none; border-top: 1px solid var(--line); }
+
+  /* ─── OVERVIEW STRIP ─── */
+  .overview-strip { background: var(--ink); color: var(--white); padding: 64px 0; }
+  .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .overview-item { padding: 0 40px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .overview-item:last-child { border-right: none; }
+  .overview-item label { display: block; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mauve); margin-bottom: 10px; }
+  .overview-item p { font-size: 15px; font-weight: 400; line-height: 1.5; color: rgba(255,255,255,0.85); }
+
+  /* ─── PROBLEM ─── */
+  .problem-section { background: var(--fog); }
+  .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .problem-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 400; font-style: italic;
+    line-height: 1.4; color: var(--ink);
+    border-left: 3px solid var(--mauve);
+    padding-left: 28px;
+    margin: 40px 0;
+  }
+  .stat-row { display: flex; gap: 32px; margin-top: 40px; }
+  .stat-box { flex: 1; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; }
+  .stat-box .number { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--mauve-dark); line-height: 1; margin-bottom: 8px; }
+  .stat-box .label { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
+  .insight-list { list-style: none; margin-top: 32px; }
+  .insight-list li { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); display: flex; gap: 14px; align-items: flex-start; }
+  .insight-list li:last-child { border-bottom: none; }
+  .insight-list li::before { content: '↳'; color: var(--teal); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── RESEARCH ─── */
+  .research-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
+  .tag { background: var(--mauve-light); color: var(--mauve-dark); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; }
+  .tag.teal { background: var(--teal-light); color: var(--teal-dark); }
+  .methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .method-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 32px 28px; }
+  .method-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+  .method-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .method-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ─── PERSONAS ─── */
+  .personas-section { background: var(--ink); color: var(--white); }
+  .persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .persona-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 32px 28px; position: relative; overflow: hidden; transition: transform 0.2s, background 0.2s; }
+  .persona-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+  .persona-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--mauve); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--white); margin-bottom: 20px; }
+  .persona-avatar.teal { background: var(--teal); }
+  .persona-avatar.dark { background: rgba(191,141,188,0.3); }
+  .persona-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .persona-role { font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+  .persona-quote { font-style: italic; font-size: 15px; color: var(--mauve-light); line-height: 1.5; margin-bottom: 20px; border-left: 2px solid var(--mauve); padding-left: 14px; }
+  .persona-tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .p-tag { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 500; }
+  .p-tag.need { background: rgba(191,141,188,0.2); color: var(--mauve-light); }
+  .p-tag.pain { background: rgba(85,113,116,0.3); color: #A8D0D4; }
+  .persona-section-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+  .persona-detail { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 16px; }
+
+  /* ─── DEFINE / POV ─── */
+  .define-section { background: var(--mauve-light); }
+  .pov-table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+  .pov-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve-dark); padding: 12px 20px; text-align: left; background: rgba(191,141,188,0.2); }
+  .pov-table td { padding: 20px; font-size: 14px; color: var(--ink-soft); vertical-align: top; border-bottom: 1px solid rgba(191,141,188,0.3); line-height: 1.5; }
+  .pov-table td:first-child { font-weight: 600; color: var(--ink); font-size: 15px; }
+  .pov-table tr:last-child td { border-bottom: none; }
+  .hmw-box { background: var(--white); border-radius: 16px; padding: 40px; margin-top: 48px; border: 1px solid var(--mauve); }
+  .hmw-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mauve-dark); margin-bottom: 16px; }
+  .hmw-text { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+  /* ─── ARCHITECTURE ─── */
+  .arch-section { background: var(--white); }
+  .flow-container { margin-top: 56px; overflow-x: auto; }
+  .user-flow { display: flex; align-items: flex-start; gap: 0; }
+  .flow-column { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 140px; }
+  .flow-column-label { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mauve-dark); background: var(--mauve-light); padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+  .flow-box { background: var(--fog); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 12px; text-align: center; color: var(--ink); width: 120px; line-height: 1.3; }
+  .flow-box.primary { background: var(--mauve-dark); color: var(--white); border-color: var(--mauve-dark); }
+  .flow-box.teal { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); }
+  .flow-arrow { font-size: 20px; color: var(--mauve); margin: 0 4px; align-self: center; flex-shrink: 0; }
+
+  /* ─── DESIGN SYSTEM ─── */
+  .ds-section { background: var(--fog); }
+  .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; }
+  .ds-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+  .ds-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 24px; }
+  .color-swatches { display: flex; gap: 0; border-radius: 10px; overflow: hidden; height: 80px; margin-bottom: 20px; }
+  .swatch { flex: 1; display: flex; align-items: flex-end; padding: 8px; }
+  .swatch-label { font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; }
+  .swatch-mauve { background: #BF8DBC; }
+  .swatch-ink { background: #242424; }
+  .swatch-teal { background: #557174; }
+  .swatch-fog { background: #F5F2F0; border: 1px solid var(--line); }
+  .swatch-label.light { color: rgba(255,255,255,0.8); }
+  .swatch-label.dark { color: rgba(36,36,36,0.5); }
+  .type-sample { margin: 8px 0; }
+  .type-h1 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--ink); }
+  .type-h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--ink); }
+  .type-body { font-size: 14px; color: var(--ink-soft); }
+  .type-mono { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mauve-dark); }
+  .icon-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 16px; }
+  .icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .icon-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--fog); display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid var(--line); }
+  .icon-label { font-size: 10px; color: var(--ink-soft); text-align: center; font-family: 'DM Mono', monospace; }
+  .component-demos { display: flex; flex-direction: column; gap: 16px; }
+  .demo-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--white); font-size: 12px; font-weight: 500; padding: 7px 14px; border-radius: 20px; }
+  .demo-chip-outline { display: inline-flex; align-items: center; gap: 6px; background: transparent; color: var(--ink-soft); font-size: 12px; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--line); }
+  .demo-search { display: flex; align-items: center; gap: 8px; background: var(--fog); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--ink-soft); }
+  .demo-bottom-nav { display: flex; justify-content: space-around; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 12px 0; }
+  .demo-nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--ink-soft); }
+  .demo-nav-item.active { color: var(--mauve-dark); }
+  .demo-toggle { display: flex; align-items: center; gap: 10px; }
+  .toggle-track { width: 44px; height: 24px; background: var(--teal); border-radius: 12px; position: relative; }
+  .toggle-thumb { width: 18px; height: 18px; background: white; border-radius: 50%; position: absolute; top: 3px; right: 4px; }
+
+  /* ─── SCREENS ─── */
+  .screens-section { background: var(--white); }
+  .screens-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .screen-card { display: flex; flex-direction: column; gap: 16px; }
+  .screen-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mauve-dark); }
+  .screen-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .screen-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .mini-phone { background: var(--white); border-radius: 24px; border: 1.5px solid var(--line); overflow: hidden; aspect-ratio: 9/16; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(36,36,36,0.08); }
+  .mini-status { background: var(--white); padding: 8px 14px 4px; display: flex; justify-content: space-between; font-size: 8px; font-family: 'DM Mono', monospace; color: var(--ink); flex-shrink: 0; }
+  .mini-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* Onboarding screen */
+  .onboard-screen { background: var(--white); flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 14px; }
+  .onboard-icon-large { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 16px; }
+  .onboard-icon-large.mauve { background: var(--mauve-light); }
+  .onboard-text { font-size: 12px; text-align: center; color: var(--ink-soft); line-height: 1.4; margin-bottom: 12px; }
+  .onboard-app-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+
+  /* Search screen */
+  .search-screen { background: var(--white); flex: 1; display: flex; flex-direction: column; padding: 10px; gap: 8px; }
+  .mini-search-bar { background: var(--fog); border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--ink-soft); }
+  .mini-chips { display: flex; gap: 5px; flex-wrap: nowrap; overflow: hidden; }
+  .mini-chip { background: var(--ink); color: var(--white); font-size: 8px; padding: 4px 8px; border-radius: 10px; white-space: nowrap; }
+  .mini-chip.outline { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
+  .mini-card { background: var(--fog); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+  .mini-card-img { height: 40px; border-radius: 6px; background: linear-gradient(135deg, var(--mauve-light), var(--teal-light)); }
+  .mini-card-name { font-size: 9px; font-weight: 600; color: var(--ink); }
+  .mini-card-meta { font-size: 8px; color: var(--ink-soft); }
+  .mini-card-row { display: flex; gap: 5px; }
+  .mini-tag { font-size: 7px; padding: 2px 5px; border-radius: 4px; background: var(--teal-light); color: var(--teal-dark); }
+
+  /* Detail screen */
+  .detail-screen { background: var(--white); flex: 1; display: flex; flex-direction: column; padding: 0; }
+  .detail-hero-img { height: 60px; background: linear-gradient(135deg, #BF8DBC 0%, #557174 100%); flex-shrink: 0; }
+  .detail-content { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+  .detail-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .detail-meta { font-size: 8px; color: var(--ink-soft); }
+  .detail-badge-row { display: flex; gap: 4px; }
+  .detail-badge { font-size: 7px; padding: 2px 6px; border-radius: 4px; }
+  .detail-badge.vegan { background: var(--teal-light); color: var(--teal-dark); }
+  .detail-badge.outdoor { background: var(--mauve-light); color: var(--mauve-dark); }
+  .reserve-btn { background: var(--ink); color: var(--white); font-size: 9px; font-weight: 600; padding: 8px; border-radius: 8px; text-align: center; margin-top: auto; }
+
+  /* Reservation screen */
+  .reservation-screen { background: var(--white); flex: 1; display: flex; flex-direction: column; padding: 10px; gap: 8px; }
+  .reservation-header { font-size: 10px; font-weight: 700; color: var(--ink); }
+  .res-field { background: var(--fog); border-radius: 6px; padding: 7px 10px; }
+  .res-field-label { font-size: 7px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mauve-dark); margin-bottom: 2px; }
+  .res-field-val { font-size: 9px; color: var(--ink); font-weight: 500; }
+  .confirm-btn { background: var(--mauve-dark); color: var(--white); font-size: 9px; font-weight: 600; padding: 8px; border-radius: 8px; text-align: center; margin-top: auto; }
+
+  /* Mini bottom nav */
+  .mini-bottom-nav { border-top: 1px solid var(--line); padding: 6px 0 4px; display: flex; justify-content: space-around; flex-shrink: 0; }
+  .mini-nav-icon { font-size: 14px; color: var(--ink-soft); }
+  .mini-nav-icon.active { color: var(--mauve-dark); }
+
+  /* ─── USABILITY TESTING ─── */
+  .test-section { background: var(--teal-dark); color: var(--white); }
+  .test-section .section-label { color: rgba(200,230,232,0.8); }
+  .test-section .section-label::before { background: rgba(200,230,232,0.5); }
+  .test-section .section-title { color: var(--white); }
+  .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; }
+  .scenario-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 32px; }
+  .scenario-box h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+  .scenario-box p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; }
+  .task-list { list-style: none; }
+  .task-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.75); display: flex; gap: 10px; align-items: flex-start; }
+  .task-list li:last-child { border-bottom: none; }
+  .task-num { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(200,230,232,0.6); flex-shrink: 0; margin-top: 1px; }
+  .findings-list { margin-top: 24px; }
+  .finding-item { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .finding-item:last-child { border-bottom: none; }
+  .finding-status { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .finding-status.pass { color: #7DCFB6; }
+  .finding-status.improve { color: #F4B942; }
+  .finding-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  /* ─── LEARNINGS ─── */
+  .learnings-section { background: var(--white); }
+  .learnings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 56px; }
+  .learning-card { border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .learning-card .number { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: var(--mauve-light); line-height: 1; margin-bottom: 16px; }
+  .learning-card h3 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .learning-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ─── NEXT STEPS ─── */
+  .next-section { background: var(--ink); color: var(--white); }
+  .next-section .section-label { color: var(--mauve); }
+  .next-section .section-title { color: var(--white); }
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .roadmap-item { position: relative; }
+  .roadmap-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: rgba(191,141,188,0.15); line-height: 1; position: absolute; top: -10px; left: -10px; }
+  .roadmap-content { position: relative; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 32px 24px 24px; margin-top: 20px; }
+  .roadmap-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mauve); margin-bottom: 10px; }
+  .roadmap-content h3 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 10px; }
+  .roadmap-content p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+  }
+  footer a { color: var(--mauve); text-decoration: none; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 20px; color: var(--white); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .overview-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .overview-item { border: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 16px 0; }
+    .problem-layout, .ds-grid, .test-grid { grid-template-columns: 1fr; gap: 40px; }
+    .persona-grid, .learnings-grid, .roadmap, .methods-grid { grid-template-columns: 1fr; }
+    .screens-scroll { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .container, .container-narrow { padding: 0 24px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BAR.BOOK</a>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#testing">Testing</a></li>
+    <li><a href="#learnings">Learnings</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:0">
+  <div class="hero-left">
+    <p class="hero-eyebrow animate-in">UX/UI Case Study · Mobile App</p>
+    <h1 class="hero-title animate-in delay-1">BAR<em>.</em><br>BOOK</h1>
+    <p class="hero-desc animate-in delay-2">A smart dining discovery app that helps users find, filter, and reserve gastronomic venues tailored to their lifestyle and dietary needs.</p>
+    <div class="hero-meta animate-in delay-3">
+      <div class="hero-meta-item">
+        <label>Role</label>
+        <span>UX/UI Designer</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Platform</label>
+        <span>iOS · Android</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Duration</label>
+        <span>4 months</span>
+      </div>
+      <div class="hero-meta-item">
+        <label>Tools</label>
+        <span>Figma · Miro</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="phone-mockup">
+      <div class="phone-status-bar">
+        <span>12:30</span>
+        <span>▲▼ ■</span>
+      </div>
+      <div class="phone-screen">
+        <div class="app-logo-screen">BAR.BOOK</div>
+        <div class="app-hero-img">📍</div>
+        <p class="app-tagline">Find the perfect spot<br>for every occasion</p>
+        <div class="onboard-dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+      <div class="phone-nav">
+        <div class="nav-icon active">📍</div>
+        <div class="nav-icon">📅</div>
+        <div class="nav-icon">♡</div>
+        <div class="nav-icon">⌂</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-item">
+        <label>The Challenge</label>
+        <p>Finding restaurants that match complex needs—dietary restrictions, group size, ambiance—requires visiting multiple platforms with no unified experience.</p>
+      </div>
+      <div class="overview-item">
+        <label>The Solution</label>
+        <p>A single mobile app combining smart filtering, real-time availability, and table reservations with a focus on dietary inclusivity.</p>
+      </div>
+      <div class="overview-item">
+        <label>My Contribution</label>
+        <p>End-to-end UX/UI design: user research, personas, user flows, wireframes, design system, high-fidelity prototype, and usability testing.</p>
+      </div>
+      <div class="overview-item">
+        <label>Key Outcome</label>
+        <p>A validated prototype where 100% of test users completed the core reservation flow on first attempt.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="container">
+    <div class="problem-layout">
+      <div>
+        <span class="section-label">01 · Problem Space</span>
+        <h2 class="section-title">Going out should be <em>easy</em></h2>
+        <p class="section-body">Choosing where to eat with a group is often a frustrating, multi-platform experience. Google Maps lacks dietary filters. Reservation apps don't show menus. Social media is not searchable by need.</p>
+        <blockquote class="problem-quote">"I'm the one who always has to suggest places — and I never know which ones are vegan-friendly."</blockquote>
+        <p class="section-body">People who eat out frequently — especially those with dietary restrictions or in mixed groups — have no reliable, unified tool that combines discovery, filtering, and booking in one place.</p>
+      </div>
+      <div>
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="number">3+</div>
+            <div class="label">apps users open to find and book a table for a group</div>
+          </div>
+          <div class="stat-box">
+            <div class="number">68%</div>
+            <div class="label">of users abandon a platform when dietary filters are missing</div>
+          </div>
+        </div>
+        <ul class="insight-list" style="margin-top: 32px;">
+          <li>No single platform combines search, filters, menu preview, and reservations</li>
+          <li>Vegan and vegetarian users consistently report exclusion from mainstream discovery apps</li>
+          <li>Group organizers feel the pressure of always having to find a "safe" venue for everyone</li>
+          <li>People lose time calling restaurants to confirm availability and dietary options</li>
+          <li>Saved lists and favourites are scattered across different apps with no unified record</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" style="background: var(--white)">
+  <div class="container">
+    <span class="section-label">02 · Research</span>
+    <h2 class="section-title">Understanding <em>real users</em></h2>
+    <p class="section-body">I conducted qualitative research with 8 participants across different dining profiles to uncover the pain points, motivations, and mental models around finding and visiting restaurants.</p>
+    <div class="research-tags">
+      <span class="tag">User Interviews</span>
+      <span class="tag">Contextual Inquiry</span>
+      <span class="tag teal">Competitive Benchmarking</span>
+      <span class="tag teal">Affinity Mapping</span>
+      <span class="tag">Usability Testing</span>
+    </div>
+    <div class="methods-grid">
+      <div class="method-card">
+        <span class="method-icon">🗣</span>
+        <h3>User Interviews</h3>
+        <p>8 semi-structured interviews exploring habits, frustrations, and expectations around dining out and restaurant discovery. Participants ranged from solo diners to group organizers with specific dietary needs.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-icon">🔍</span>
+        <h3>Competitive Benchmarking</h3>
+        <p>Analysed Google Maps, TripAdvisor, OpenTable, and local apps across 14 key criteria: filter depth, dietary options, reservation flow, saved lists, and social features.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-icon">🗂</span>
+        <h3>Affinity Mapping</h3>
+        <p>Clustered over 60 research insights into themes that shaped the core feature set: dietary discovery, group coordination, trust signals, and booking simplicity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FINDINGS -->
+<section style="background: var(--fog); padding-top: 0; padding-bottom: 80px;">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:24px;">Key research <em style="color:var(--mauve-dark)">insights</em></h3>
+        <ul class="insight-list">
+          <li>Users trust platforms that show real photos, opening hours, and confirmed menus together</li>
+          <li>Vegan and vegetarian users have a strong need to pre-filter before even seeing options</li>
+          <li>Outdoor seating is a primary differentiator that no app surfaces well</li>
+          <li>Group organisers want to share options and confirm bookings without leaving the app</li>
+          <li>Users want to revisit saved places and easily book again without re-searching</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:24px;">Competitive <em style="color:var(--mauve-dark)">gaps</em></h3>
+        <div style="background:var(--white); border-radius:14px; overflow:hidden; border:1px solid var(--line);">
+          <table style="width:100%; border-collapse:collapse; font-size:13px;">
+            <thead>
+              <tr style="background:var(--fog);">
+                <th style="padding:12px 16px; text-align:left; color:var(--ink-soft); font-weight:500;">Feature</th>
+                <th style="padding:12px; text-align:center; color:var(--ink-soft); font-weight:500;">Google Maps</th>
+                <th style="padding:12px; text-align:center; color:var(--ink-soft); font-weight:500;">OpenTable</th>
+                <th style="padding:12px; text-align:center; color:var(--mauve-dark); font-weight:600;">BAR.BOOK</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-top:1px solid var(--line)"><td style="padding:10px 16px; color:var(--ink);">Dietary filters</td><td style="text-align:center">⚠️</td><td style="text-align:center">❌</td><td style="text-align:center; color:var(--teal-dark); font-weight:600;">✓</td></tr>
+              <tr style="border-top:1px solid var(--line); background:var(--fog)"><td style="padding:10px 16px; color:var(--ink);">Outdoor seating filter</td><td style="text-align:center">❌</td><td style="text-align:center">❌</td><td style="text-align:center; color:var(--teal-dark); font-weight:600;">✓</td></tr>
+              <tr style="border-top:1px solid var(--line)"><td style="padding:10px 16px; color:var(--ink);">In-app reservation</td><td style="text-align:center">⚠️</td><td style="text-align:center">✓</td><td style="text-align:center; color:var(--teal-dark); font-weight:600;">✓</td></tr>
+              <tr style="border-top:1px solid var(--line); background:var(--fog)"><td style="padding:10px 16px; color:var(--ink);">Saved venues list</td><td style="text-align:center">✓</td><td style="text-align:center">❌</td><td style="text-align:center; color:var(--teal-dark); font-weight:600;">✓</td></tr>
+              <tr style="border-top:1px solid var(--line)"><td style="padding:10px 16px; color:var(--ink);">Reservation history</td><td style="text-align:center">❌</td><td style="text-align:center">✓</td><td style="text-align:center; color:var(--teal-dark); font-weight:600;">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="personas-section" id="personas">
+  <div class="container">
+    <span class="section-label" style="color:rgba(200,230,232,0.7)">03 · User Personas</span>
+    <h2 class="section-title" style="color:var(--white)">Who we're <em style="color:var(--mauve)">designing for</em></h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.6)">Three primary archetypes emerged from the research, each representing a distinct relationship with dining discovery and group coordination.</p>
+    <div class="persona-grid">
+
+      <!-- Persona 1 -->
+      <div class="persona-card">
+        <div class="persona-avatar">A</div>
+        <div class="persona-name">Agustín Herrera</div>
+        <div class="persona-role">27 · Marketing Professional · Buenos Aires</div>
+        <blockquote class="persona-quote">"I enjoy going out every weekend — I'm always the one suggesting places."</blockquote>
+        <div class="persona-section-label">Needs</div>
+        <div class="persona-tag-row">
+          <span class="p-tag need">Quick suggestions</span>
+          <span class="p-tag need">Group-friendly</span>
+          <span class="p-tag need">After-work bars</span>
+        </div>
+        <div class="persona-section-label">Pain points</div>
+        <div class="persona-tag-row">
+          <span class="p-tag pain">Friends don't want to go</span>
+          <span class="p-tag pain">Wrong vibe</span>
+        </div>
+        <div class="persona-section-label">About</div>
+        <div class="persona-detail">Very social, coordinates weekly outings with different friend groups. Always needs a venue ready to suggest. Values ambiance and drink variety.</div>
+      </div>
+
+      <!-- Persona 2 -->
+      <div class="persona-card">
+        <div class="persona-avatar teal">M</div>
+        <div class="persona-name">Micaela Sosa</div>
+        <div class="persona-role">24 · Tourism Student · Buenos Aires</div>
+        <blockquote class="persona-quote">"I love discovering places that serve traditional foods from different cultures."</blockquote>
+        <div class="persona-section-label">Needs</div>
+        <div class="persona-tag-row">
+          <span class="p-tag need">Cultural diversity</span>
+          <span class="p-tag need">Bike parking</span>
+          <span class="p-tag need">Explore city</span>
+        </div>
+        <div class="persona-section-label">Pain points</div>
+        <div class="persona-tag-row">
+          <span class="p-tag pain">Hard to find niche spots</span>
+          <span class="p-tag pain">No bike info</span>
+        </div>
+        <div class="persona-section-label">About</div>
+        <div class="persona-detail">Explores the city by bicycle, loves discovering hidden culinary gems. Needs venue details that go beyond reviews — she wants to know the story and the infrastructure.</div>
+      </div>
+
+      <!-- Persona 3 -->
+      <div class="persona-card">
+        <div class="persona-avatar dark">C</div>
+        <div class="persona-name">Claudia González</div>
+        <div class="persona-role">38 · Secondary School Teacher · Buenos Aires</div>
+        <blockquote class="persona-quote">"I'm vegetarian and I never know if a place will have enough options for me."</blockquote>
+        <div class="persona-section-label">Needs</div>
+        <div class="persona-tag-row">
+          <span class="p-tag need">Vegetarian menus</span>
+          <span class="p-tag need">Calm ambiance</span>
+          <span class="p-tag need">Reliable filters</span>
+        </div>
+        <div class="persona-section-label">Pain points</div>
+        <div class="persona-tag-row">
+          <span class="p-tag pain">Excluded by menu</span>
+          <span class="p-tag pain">Awkward group dinners</span>
+        </div>
+        <div class="persona-section-label">About</div>
+        <div class="persona-detail">Grades papers in cafés, but struggles to find calm spots with vegetarian options. Group outings often exclude her dietary needs. Needs certainty before committing to a venue.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEFINE -->
+<section class="define-section" id="define">
+  <div class="container">
+    <span class="section-label">04 · Define</span>
+    <h2 class="section-title">Point of View <em>&</em> MVP</h2>
+    <p class="section-body">Translating research into design direction. Each persona's needs were framed as a POV statement to anchor design decisions.</p>
+
+    <table class="pov-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Needs to…</th>
+          <th>Because…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Agustín<br><span style="font-size:12px; font-weight:400; color:var(--ink-soft)">The Social Organiser</span></td>
+          <td>Always have a reliable venue ready to suggest to his group</td>
+          <td>He is the one who everyone looks to for plans, and he doesn't want to let them down</td>
+        </tr>
+        <tr>
+          <td>Micaela<br><span style="font-size:12px; font-weight:400; color:var(--ink-soft)">The Explorer</span></td>
+          <td>Discover culturally diverse gastronomic venues with practical logistics (like bike parking)</td>
+          <td>Finding them on her own takes too long and information is scattered across platforms</td>
+        </tr>
+        <tr>
+          <td>Claudia<br><span style="font-size:12px; font-weight:400; color:var(--ink-soft)">The Inclusive Diner</span></td>
+          <td>Find restaurants that genuinely accommodate vegetarian menus in a relaxed environment</td>
+          <td>She feels excluded in group settings and can't always trust what apps show her</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hmw-box">
+      <div class="hmw-label">How might we…</div>
+      <div class="hmw-text">How might we help diverse groups of diners — each with different dietary needs and social contexts — find, evaluate, and reserve the right gastronomic venue in a single, seamless experience?</div>
+    </div>
+
+    <div style="margin-top: 56px;">
+      <h3 style="font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--ink); margin-bottom:32px;">MVP Core Features</h3>
+      <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+        <div style="background:var(--white); border-radius:12px; padding:20px 24px; border:1px solid rgba(191,141,188,0.4); display:flex; align-items:flex-start; gap:16px;">
+          <span style="font-size:24px; flex-shrink:0;">🔍</span>
+          <div><strong style="font-size:15px; color:var(--ink);">Smart Search & Filters</strong><p style="font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.5;">Search by venue type, dietary option (vegan, vegetarian, gluten-free), outdoor seating, and group capacity.</p></div>
+        </div>
+        <div style="background:var(--white); border-radius:12px; padding:20px 24px; border:1px solid rgba(191,141,188,0.4); display:flex; align-items:flex-start; gap:16px;">
+          <span style="font-size:24px; flex-shrink:0;">📅</span>
+          <div><strong style="font-size:15px; color:var(--ink);">Table Reservation</strong><p style="font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.5;">Reserve a table directly in-app specifying date, time, and party size. Confirmation sent instantly.</p></div>
+        </div>
+        <div style="background:var(--white); border-radius:12px; padding:20px 24px; border:1px solid rgba(191,141,188,0.4); display:flex; align-items:flex-start; gap:16px;">
+          <span style="font-size:24px; flex-shrink:0;">♡</span>
+          <div><strong style="font-size:15px; color:var(--ink);">Save Favourites</strong><p style="font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.5;">Bookmark venues to a personal saved list, accessible at any time without repeating searches.</p></div>
+        </div>
+        <div style="background:var(--white); border-radius:12px; padding:20px 24px; border:1px solid rgba(191,141,188,0.4); display:flex; align-items:flex-start; gap:16px;">
+          <span style="font-size:24px; flex-shrink:0;">📋</span>
+          <div><strong style="font-size:15px; color:var(--ink);">Reservation History</strong><p style="font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.5;">View past and upcoming reservations in one place. Rebook a previous venue with a single tap.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE / USER FLOW -->
+<section class="arch-section" id="architecture">
+  <div class="container">
+    <span class="section-label">05 · Information Architecture</span>
+    <h2 class="section-title">How the app <em>flows</em></h2>
+    <p class="section-body">The core user journey was mapped end-to-end: from first launch through onboarding, venue discovery, filtering, detailed inspection, and reservation completion.</p>
+
+    <div class="flow-container">
+      <div style="display:flex; align-items:flex-start; gap:0; overflow-x:auto; padding-bottom:16px; margin-top:48px;">
+
+        <div class="flow-column">
+          <div class="flow-column-label">Launch</div>
+          <div class="flow-box primary">Splash Screen</div>
+          <div class="flow-box">Onboarding (3 slides)</div>
+          <div class="flow-box">Login / Register</div>
+        </div>
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-column">
+          <div class="flow-column-label">Discover</div>
+          <div class="flow-box primary">Home / Search</div>
+          <div class="flow-box teal">Apply Filters</div>
+          <div class="flow-box teal">Browse Results</div>
+        </div>
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-column">
+          <div class="flow-column-label">Evaluate</div>
+          <div class="flow-box primary">Venue Detail</div>
+          <div class="flow-box">Photos · Menu</div>
+          <div class="flow-box">Save to Favourites</div>
+        </div>
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-column">
+          <div class="flow-column-label">Reserve</div>
+          <div class="flow-box primary">Reservation Form</div>
+          <div class="flow-box">Date · Time · Party</div>
+          <div class="flow-box teal">Confirmation</div>
+        </div>
+        <div class="flow-arrow">→</div>
+
+        <div class="flow-column">
+          <div class="flow-column-label">Manage</div>
+          <div class="flow-box primary">My Reservations</div>
+          <div class="flow-box">View · Cancel</div>
+          <div class="flow-box teal">My Saved List</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; background: var(--fog); border-radius: 16px; padding: 32px; border: 1px solid var(--line);">
+      <h3 style="font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:16px;">Navigation Model</h3>
+      <p style="font-size:14px; color:var(--ink-soft); line-height:1.7; margin-bottom:20px;">A <strong>Bottom Navigation Bar</strong> with 4 persistent tabs allows users to switch contexts without losing state. A <strong>Top App Bar</strong> with contextual search and a back arrow handles in-flow navigation.</p>
+      <div style="display:flex; gap:24px; flex-wrap:wrap;">
+        <div style="background:var(--white); border:1px solid var(--line); border-radius:10px; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+          <span style="font-size:20px;">📍</span>
+          <div><strong style="font-size:13px;">Discover</strong><br><span style="font-size:11px;color:var(--ink-soft)">Search & filter venues</span></div>
+        </div>
+        <div style="background:var(--white); border:1px solid var(--line); border-radius:10px; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+          <span style="font-size:20px;">📅</span>
+          <div><strong style="font-size:13px;">Reservations</strong><br><span style="font-size:11px;color:var(--ink-soft)">View & manage bookings</span></div>
+        </div>
+        <div style="background:var(--white); border:1px solid var(--line); border-radius:10px; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+          <span style="font-size:20px;">♡</span>
+          <div><strong style="font-size:13px;">Saved</strong><br><span style="font-size:11px;color:var(--ink-soft)">Bookmarked venues</span></div>
+        </div>
+        <div style="background:var(--white); border:1px solid var(--line); border-radius:10px; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+          <span style="font-size:20px;">👤</span>
+          <div><strong style="font-size:13px;">Profile</strong><br><span style="font-size:11px;color:var(--ink-soft)">Account & preferences</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN SYSTEM -->
+<section class="ds-section" id="design">
+  <div class="container">
+    <span class="section-label">06 · Design System</span>
+    <h2 class="section-title">Building the <em>visual language</em></h2>
+    <p class="section-body">A cohesive design system was built from scratch using Atomic Design methodology — from colour tokens and typography through to complex components and screen layouts.</p>
+    <div class="ds-grid">
+
+      <!-- Colours -->
+      <div class="ds-card">
+        <h3>Colour Palette</h3>
+        <div class="color-swatches">
+          <div class="swatch swatch-mauve"><span class="swatch-label light" style="font-size:8px;">#BF8DBC<br>Mauve</span></div>
+          <div class="swatch swatch-ink"><span class="swatch-label light" style="font-size:8px;">#242424<br>Ink</span></div>
+          <div class="swatch swatch-teal"><span class="swatch-label light" style="font-size:8px;">#557174<br>Teal</span></div>
+          <div class="swatch swatch-fog"><span class="swatch-label dark" style="font-size:8px;">#F5F2F0<br>Fog</span></div>
+        </div>
+        <p style="font-size:13px; color:var(--ink-soft); line-height:1.6;">Mauve as the primary brand tone communicates warmth and approachability. Ink provides authority. Teal adds a refreshing, dietary-positive accent used for vegan/vegetarian tags.</p>
+      </div>
+
+      <!-- Typography -->
+      <div class="ds-card">
+        <h3>Typography</h3>
+        <div class="type-sample"><div class="type-h1">Title 1 — Playfair Display</div></div>
+        <div class="type-sample"><div class="type-h2">Title 2 — Bold</div></div>
+        <div class="type-sample" style="border-top:1px solid var(--line); padding-top:12px; margin-top:8px;"><div class="type-body">Body — DM Sans Regular · 16px · Line height 1.7<br>Used for all descriptive text, venue details, and body content.</div></div>
+        <div class="type-sample" style="margin-top:12px;"><div class="type-mono">DM Mono · Labels · Metadata · Tags</div></div>
+      </div>
+
+      <!-- Icons -->
+      <div class="ds-card">
+        <h3>Icon System</h3>
+        <p style="font-size:13px; color:var(--ink-soft); margin-bottom:16px;">Category icons appear both bare (search) and contained (category chips), using a circular container at 48px with a subtle background fill.</p>
+        <div class="icon-grid">
+          <div class="icon-item"><div class="icon-circle">☕</div><div class="icon-label">Café</div></div>
+          <div class="icon-item"><div class="icon-circle">🍔</div><div class="icon-label">Burger</div></div>
+          <div class="icon-item"><div class="icon-circle">🌿</div><div class="icon-label">Vegan</div></div>
+          <div class="icon-item"><div class="icon-circle">🍸</div><div class="icon-label">Bar</div></div>
+          <div class="icon-item"><div class="icon-circle">🍽</div><div class="icon-label">Restaurant</div></div>
+        </div>
+      </div>
+
+      <!-- Components -->
+      <div class="ds-card">
+        <h3>Key Components</h3>
+        <div class="component-demos">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-dark); margin-bottom:8px;">Search Bar</div>
+            <div class="demo-search">🔍 &nbsp;Search cafeterias, bars…</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-dark); margin-bottom:8px;">Filter Chips</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <div class="demo-chip">Outdoor tables ×</div>
+              <div class="demo-chip-outline">Vegan</div>
+              <div class="demo-chip-outline">Bar</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-dark); margin-bottom:8px;">Bottom Navigation</div>
+            <div class="demo-bottom-nav">
+              <div class="demo-nav-item active"><span style="font-size:18px">📍</span><span>Discover</span></div>
+              <div class="demo-nav-item"><span style="font-size:18px">📅</span><span>Book</span></div>
+              <div class="demo-nav-item"><span style="font-size:18px">♡</span><span>Saved</span></div>
+              <div class="demo-nav-item"><span style="font-size:18px">⌂</span><span>Profile</span></div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:20px;">
+            <div>
+              <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-dark); margin-bottom:8px;">Toggle (Active)</div>
+              <div class="demo-toggle">
+                <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                <span style="font-size:13px; color:var(--ink-soft);">Outdoor seating</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- KEY SCREENS -->
+<section class="screens-section">
+  <div class="container">
+    <span class="section-label">07 · Key Screens</span>
+    <h2 class="section-title">The <em>core experience</em></h2>
+    <p class="section-body">From the first onboarding moment to reservation confirmation, every screen was designed to reduce friction and build confidence in the user's choice.</p>
+
+    <div class="screens-scroll">
+
+      <!-- Onboarding -->
+      <div class="screen-card">
+        <div class="mini-phone">
+          <div class="mini-status"><span>12:30</span><span>▲▼■</span></div>
+          <div class="mini-content">
+            <div class="onboard-screen">
+              <div class="onboard-icon-large mauve">📍</div>
+              <div class="onboard-app-name">BAR.BOOK</div>
+              <p class="onboard-text">Find the perfect gastronomic spot for every occasion</p>
+              <div class="onboard-dots" style="margin-top:0"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+              <div style="font-size:20px; color:var(--ink-soft); margin-top:8px;">→</div>
+            </div>
+          </div>
+          <div class="mini-bottom-nav">
+            <span class="mini-nav-icon active">📍</span>
+            <span class="mini-nav-icon">📅</span>
+            <span class="mini-nav-icon">♡</span>
+            <span class="mini-nav-icon">⌂</span>
+          </div>
+        </div>
+        <div>
+          <div class="screen-label">Onboarding</div>
+          <div class="screen-title">Welcome Flow</div>
+          <div class="screen-desc">3-slide carousel presenting core value propositions: discover, reserve, and save. Clear and welcoming before any login.</div>
+        </div>
+      </div>
+
+      <!-- Search & Filter -->
+      <div class="screen-card">
+        <div class="mini-phone">
+          <div class="mini-status"><span>12:30</span><span>▲▼■</span></div>
+          <div class="mini-content">
+            <div class="search-screen">
+              <div style="font-size:10px; font-weight:700; color:var(--ink);">BAR.BOOK</div>
+              <div class="mini-search-bar">🔍 &nbsp;Cafeterias…</div>
+              <div class="mini-chips">
+                <div class="mini-chip">Outdoor ×</div>
+                <div class="mini-chip outline">Vegan</div>
+                <div class="mini-chip outline">Bar</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-card-img"></div>
+                <div class="mini-card-name">Cafetería Feca</div>
+                <div class="mini-card-row">
+                  <div class="mini-tag">Vegan</div>
+                  <div class="mini-tag" style="background:var(--mauve-light); color:var(--mauve-dark);">Outdoor</div>
+                </div>
+                <div class="mini-card-meta">★ 4.8 · Open now · 2.3km</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-card-img" style="background: linear-gradient(135deg, #E8D0E7, #BF8DBC)"></div>
+                <div class="mini-card-name">Amber Bar</div>
+                <div class="mini-card-row">
+                  <div class="mini-tag" style="background:var(--mauve-light); color:var(--mauve-dark);">Outdoor</div>
+                </div>
+                <div class="mini-card-meta">★ 4.5 · Open now · 1.1km</div>
+              </div>
+            </div>
+          </div>
+          <div class="mini-bottom-nav">
+            <span class="mini-nav-icon active">📍</span>
+            <span class="mini-nav-icon">📅</span>
+            <span class="mini-nav-icon">♡</span>
+            <span class="mini-nav-icon">⌂</span>
+          </div>
+        </div>
+        <div>
+          <div class="screen-label">Discovery</div>
+          <div class="screen-title">Search & Filter</div>
+          <div class="screen-desc">Top search bar with filterable chip selectors. Results update instantly. Applied filters shown as dismissible chips.</div>
+        </div>
+      </div>
+
+      <!-- Venue Detail -->
+      <div class="screen-card">
+        <div class="mini-phone">
+          <div class="mini-status"><span>12:30</span><span>▲▼■</span></div>
+          <div class="mini-content">
+            <div class="detail-screen">
+              <div class="detail-hero-img"></div>
+              <div class="detail-content">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                  <div>
+                    <div class="detail-name">Cafetería Feca</div>
+                    <div class="detail-meta">Café · Palermo · Open until 20:00</div>
+                  </div>
+                  <span style="font-size:16px; color:var(--mauve)">♡</span>
+                </div>
+                <div class="detail-badge-row">
+                  <span class="detail-badge vegan">Vegan ✓</span>
+                  <span class="detail-badge outdoor">Outdoor ✓</span>
+                  <span class="detail-badge" style="background:var(--fog); color:var(--ink-soft);">Up to 12 guests</span>
+                </div>
+                <div style="font-size:8px; color:var(--ink-soft); line-height:1.4;">Vintage café known for artisan coffee and homemade pastries. Internal patio with plants.</div>
+                <div style="border-top:1px solid var(--line); padding-top:6px; font-size:8px; color:var(--ink-soft);">★ 4.8 (124 reviews) · 2.3km away</div>
+                <div class="reserve-btn">Reserve a Table</div>
+              </div>
+            </div>
+          </div>
+          <div class="mini-bottom-nav">
+            <span class="mini-nav-icon">📍</span>
+            <span class="mini-nav-icon">📅</span>
+            <span class="mini-nav-icon">♡</span>
+            <span class="mini-nav-icon">⌂</span>
+          </div>
+        </div>
+        <div>
+          <div class="screen-label">Evaluate</div>
+          <div class="screen-title">Venue Detail</div>
+          <div class="screen-desc">Full venue profile with hero image, dietary badges, capacity, ratings, and a prominent "Reserve" CTA. Save to favourites in one tap.</div>
+        </div>
+      </div>
+
+      <!-- Reservation Form -->
+      <div class="screen-card">
+        <div class="mini-phone">
+          <div class="mini-status"><span>12:30</span><span>▲▼■</span></div>
+          <div class="mini-content">
+            <div class="reservation-screen">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                <span style="font-size:12px;">←</span>
+                <div class="reservation-header">Reserve a Table</div>
+              </div>
+              <div style="font-size:9px; color:var(--mauve-dark); font-weight:500;">Cafetería Feca</div>
+              <div class="res-field">
+                <div class="res-field-label">Date</div>
+                <div class="res-field-val">Saturday, November 15</div>
+              </div>
+              <div class="res-field">
+                <div class="res-field-label">Time</div>
+                <div class="res-field-val">4:30 PM</div>
+              </div>
+              <div class="res-field">
+                <div class="res-field-label">Party Size</div>
+                <div class="res-field-val">8 guests</div>
+              </div>
+              <div class="res-field">
+                <div class="res-field-label">Notes (optional)</div>
+                <div class="res-field-val" style="color:var(--ink-soft);">Birthday celebration</div>
+              </div>
+              <div class="confirm-btn">Confirm Reservation</div>
+            </div>
+          </div>
+          <div class="mini-bottom-nav">
+            <span class="mini-nav-icon">📍</span>
+            <span class="mini-nav-icon active">📅</span>
+            <span class="mini-nav-icon">♡</span>
+            <span class="mini-nav-icon">⌂</span>
+          </div>
+        </div>
+        <div>
+          <div class="screen-label">Book</div>
+          <div class="screen-title">Reservation Form</div>
+          <div class="screen-desc">Simple, clear form with date picker, time selector, and party size. Optional notes field. Single confirm CTA leads to success state.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- USABILITY TESTING -->
+<section class="test-section" id="testing">
+  <div class="container">
+    <span class="section-label">08 · Usability Testing</span>
+    <h2 class="section-title">Validating with <em>real users</em></h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.65)">Moderated usability sessions were conducted with 5 participants using a clickable Figma prototype. The test was built around a realistic scenario.</p>
+    <div class="test-grid">
+      <div>
+        <div class="scenario-box">
+          <h3>Test Scenario</h3>
+          <p>Your birthday is coming up and you want to celebrate with friends at an outdoor café. Many of your friends are vegan. Find a venue, reserve a table for 8 people, and save it to your favourites.</p>
+          <ul class="task-list">
+            <li><span class="task-num">T1</span>Search, filter, and reserve a venue for 8 people for a birthday tea-time</li>
+            <li><span class="task-num">T2</span>Log in to the app</li>
+            <li><span class="task-num">T3</span>Save a gastronomic venue to favourites</li>
+            <li><span class="task-num">T4</span>View your existing reservations</li>
+          </ul>
+        </div>
+        <div class="scenario-box" style="margin-top:20px;">
+          <h3>Success Criteria</h3>
+          <p>Users must arrive at the reservation confirmation screen and demonstrate they understand the booking has been made.</p>
+          <div style="margin-top:8px; display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="width:100%; background:rgba(255,255,255,0.1); border-radius:4px; height:8px; overflow:hidden;">
+                <div style="width:100%; height:100%; background:#7DCFB6; border-radius:4px;"></div>
+              </div>
+              <span style="font-size:12px; white-space:nowrap; color:rgba(255,255,255,0.7)">Task completion 100%</span>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="width:100%; background:rgba(255,255,255,0.1); border-radius:4px; height:8px; overflow:hidden;">
+                <div style="width:80%; height:100%; background:#7DCFB6; border-radius:4px;"></div>
+              </div>
+              <span style="font-size:12px; white-space:nowrap; color:rgba(255,255,255,0.7)">Correct path 80%</span>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div style="width:100%; background:rgba(255,255,255,0.1); border-radius:4px; height:8px; overflow:hidden;">
+                <div style="width:90%; height:100%; background:#7DCFB6; border-radius:4px;"></div>
+              </div>
+              <span style="font-size:12px; white-space:nowrap; color:rgba(255,255,255,0.7)">Would use again 90%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="scenario-box">
+          <h3>Key Findings</h3>
+          <div class="findings-list">
+            <div class="finding-item">
+              <div class="finding-status pass">✓ Passed</div>
+              <div class="finding-text">All users successfully completed the reservation flow on first attempt without assistance</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-status pass">✓ Passed</div>
+              <div class="finding-text">Filter chips were immediately understood as interactive. Users appreciated seeing active filters persist as dismissible tags</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-status improve">↑ Improve</div>
+              <div class="finding-text">Some users didn't notice the "Save" heart icon on the detail screen. Needs higher contrast or a labelled button variant</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-status improve">↑ Improve</div>
+              <div class="finding-text">The "View Reservations" section was not intuitive to locate — users expected it in the top navigation rather than the bottom tab bar</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-status pass">✓ Passed</div>
+              <div class="finding-text">Reservation confirmation screen clearly communicated success. All users understood the booking was complete</div>
+            </div>
+            <div class="finding-item">
+              <div class="finding-status improve">↑ Improve</div>
+              <div class="finding-text">Users wanted a "Party size" filter visible before entering venue detail — add as a quick filter chip on the search screen</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNINGS -->
+<section class="learnings-section" id="learnings">
+  <div class="container">
+    <span class="section-label">09 · Learnings</span>
+    <h2 class="section-title">What I <em>learned</em></h2>
+    <p class="section-body">This project sharpened my understanding of inclusive design, the tension between discoverability and simplicity, and the value of testing assumptions early.</p>
+    <div class="learnings-grid">
+      <div class="learning-card">
+        <div class="number">01</div>
+        <h3>Dietary needs are primary, not secondary</h3>
+        <p>Placing dietary filters front and centre — not buried in advanced search — changed the entire emotional experience for users like Claudia. Inclusive design means making it the default, not an add-on.</p>
+      </div>
+      <div class="learning-card">
+        <div class="number">02</div>
+        <h3>Users read icons slower than labels</h3>
+        <p>Navigation icons without labels caused hesitation during testing. A hybrid label + icon approach on the bottom bar eliminated confusion and sped up task completion significantly.</p>
+      </div>
+      <div class="learning-card">
+        <div class="number">03</div>
+        <h3>Confirmation = Trust</h3>
+        <p>A clear, celebratory confirmation screen after booking was the most impactful single screen. Users repeatedly mentioned it as the moment they "trusted" the app. Feedback loops build confidence.</p>
+      </div>
+      <div class="learning-card">
+        <div class="number">04</div>
+        <h3>Filtering must be fast</h3>
+        <p>Every additional tap to apply a filter caused drop-off intention in interview participants. Chips on the search screen — not in a modal — reduced the filter flow from 4 taps to 1.</p>
+      </div>
+      <div class="learning-card">
+        <div class="number">05</div>
+        <h3>Test with the real scenario</h3>
+        <p>Using a realistic birthday scenario rather than abstract tasks gave richer insights. Users were emotionally invested, which revealed anxiety points that abstract tasks would have missed.</p>
+      </div>
+      <div class="learning-card">
+        <div class="number">06</div>
+        <h3>Saved lists drive return visits</h3>
+        <p>Users who saved a venue during the test session immediately wanted to book it again. The favourites feature creates a retention loop — a business insight that emerged purely from observation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="next-section" id="next">
+  <div class="container">
+    <span class="section-label">10 · Next Steps</span>
+    <h2 class="section-title">Where this <em>goes next</em></h2>
+    <p class="section-body" style="color:rgba(255,255,255,0.6)">The validated MVP sets a clear foundation. These are the prioritised next phases to move from prototype to a shippable product.</p>
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <div class="roadmap-num">01</div>
+        <div class="roadmap-content">
+          <div class="roadmap-tag">Phase 1 · Immediate</div>
+          <h3>Iterate on usability findings</h3>
+          <p>Increase contrast on the Save icon, add labels to bottom navigation, and surface party-size as a top-level filter chip. Re-test with the same 5 participants.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-num">02</div>
+        <div class="roadmap-content">
+          <div class="roadmap-tag">Phase 2 · Short-term</div>
+          <h3>Expand filter taxonomy</h3>
+          <p>Add gluten-free, halal, and kosher dietary filters. Introduce price range and ambiance filters (quiet, lively, date-night). Build out the venue profile with full menu integration.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-num">03</div>
+        <div class="roadmap-content">
+          <div class="roadmap-tag">Phase 3 · Medium-term</div>
+          <h3>Social & group features</h3>
+          <p>Allow users to share venue options with friends before booking. Add a group voting feature and collaborative saved lists. Introduce push notifications for reservation reminders.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 64px; padding: 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+      <div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:24px; font-weight:700; color:var(--white); margin-bottom:8px;">Ready to bring this to life</h3>
+        <p style="font-size:14px; color:rgba(255,255,255,0.55); max-width:480px; line-height:1.7;">The design system is documented, the prototype is validated, and the technical architecture is scoped. BAR.BOOK is ready for front-end development.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://www.figma.com/design/QZsJyIFc6EkSKf1G9WcuQc/UX-UI-Miriam" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:var(--mauve); color:var(--white); font-size:13px; font-weight:600; padding:12px 24px; border-radius:8px; text-decoration:none;">View Figma Prototype ↗</a>
+        <a href="https://github.com" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:rgba(255,255,255,0.8); font-size:13px; font-weight:600; padding:12px 24px; border-radius:8px; text-decoration:none; border:1px solid rgba(255,255,255,0.2);">GitHub Repo ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">BAR.BOOK</div>
+    <div style="margin-top:6px;">UX/UI Case Study · Miriam Costa Manticof</div>
+  </div>
+  <div style="text-align:right;">
+    <div>Designed with intention. Built to scale.</div>
+    <div style="margin-top:4px;">Portfolio · <a href="https://github.com">GitHub</a> · <a href="https://www.figma.com/design/QZsJyIFc6EkSKf1G9WcuQc/UX-UI-Miriam">Figma</a></div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
