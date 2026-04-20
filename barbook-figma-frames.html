@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAR.BOOK — Figma Frames Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mauve: #BF8DBC;
+  --mauve-l: #E8D0E7;
+  --mauve-d: #8A5E87;
+  --teal: #557174;
+  --teal-l: #D4E3E4;
+  --teal-d: #3A5053;
+  --ink: #242424;
+  --ink2: #4A4A4A;
+  --ink3: #717171;
+  --fog: #F5F2F0;
+  --fog2: #EDEAE7;
+  --cream: #FAFAF8;
+  --line: #E8E4E0;
+  --white: #FFFFFF;
+  --green: #4CAF50;
+  --amber: #F59E0B;
+  --red: #EF4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1A1A1A;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  padding: 48px 32px;
+}
+
+/* ── CANVAS HEADER ── */
+.canvas-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 24px;
+}
+.canvas-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:900; color:#fff; letter-spacing:-0.5px; }
+.canvas-title span { color: var(--mauve); }
+.canvas-subtitle { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px; letter-spacing:0.1em; text-transform:uppercase; }
+.frame-count { font-family:'DM Mono',monospace; font-size:12px; color:rgba(255,255,255,0.3); }
+
+/* ── SECTION LABELS ── */
+.flow-section { margin-bottom: 64px; }
+.flow-label {
+  font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.18em;
+  text-transform:uppercase; color:rgba(255,255,255,0.3);
+  margin-bottom:24px; display:flex; align-items:center; gap:12px;
+}
+.flow-label::after { content:''; flex:1; height:1px; background:rgba(255,255,255,0.06); }
+
+.frames-row { display:flex; gap:32px; align-items:flex-start; flex-wrap:wrap; }
+
+/* ── PHONE FRAME ── */
+.frame-wrap { display:flex; flex-direction:column; align-items:center; gap:14px; }
+.frame-name {
+  font-family:'DM Mono',monospace; font-size:9px; letter-spacing:0.12em;
+  text-transform:uppercase; color:rgba(255,255,255,0.35); text-align:center;
+}
+.frame-num {
+  font-family:'DM Mono',monospace; font-size:8px;
+  color:rgba(255,255,255,0.18); text-align:center; margin-bottom:4px;
+}
+
+.phone {
+  width: 200px;
+  height: 432px;
+  background: var(--white);
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+}
+.phone.tall { height: 520px; }
+
+/* ── STATUS BAR ── */
+.sb {
+  background: var(--white);
+  padding: 10px 16px 6px;
+  display: flex; justify-content:space-between; align-items:center;
+  flex-shrink: 0;
+}
+.sb.dark { background: var(--ink); }
+.sb.mauve { background: var(--mauve-d); }
+.sb-time { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; color:var(--ink); }
+.sb-time.light { color: rgba(255,255,255,0.9); }
+.sb-icons { font-size:9px; color:var(--ink); display:flex; gap:3px; }
+.sb-icons.light { color: rgba(255,255,255,0.9); }
+
+/* ── BOTTOM NAV ── */
+.bnav {
+  border-top: 1px solid var(--line);
+  padding: 8px 0 10px;
+  display: flex; justify-content:space-around; flex-shrink:0;
+  background: var(--white);
+}
+.bnav-item { display:flex; flex-direction:column; align-items:center; gap:3px; }
+.bnav-icon { font-size:16px; color:var(--ink3); }
+.bnav-icon.active { color:var(--mauve-d); }
+.bnav-label { font-size:8px; color:var(--ink3); font-family:'DM Mono',monospace; }
+.bnav-label.active { color:var(--mauve-d); font-weight:500; }
+
+/* ── COMMON SCREEN HELPERS ── */
+.screen { flex:1; overflow:hidden; display:flex; flex-direction:column; }
+.px { padding: 0 14px; }
+.px12 { padding: 0 12px; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 1 — SPLASH
+───────────────────────────────────────────── */
+.splash {
+  flex:1; background:var(--ink);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px;
+}
+.splash-logo { font-family:'Playfair Display',serif; font-size:34px; font-weight:900; color:#fff; letter-spacing:-1px; }
+.splash-logo span { color:var(--mauve); }
+.splash-dot { width:6px; height:6px; border-radius:50%; background:var(--mauve); }
+.splash-tagline { font-size:10px; color:rgba(255,255,255,0.45); letter-spacing:0.12em; font-family:'DM Mono',monospace; text-transform:uppercase; }
+.splash-pin {
+  width:52px; height:52px; border-radius:50%;
+  background: rgba(191,141,188,0.15); border:1px solid rgba(191,141,188,0.3);
+  display:flex; align-items:center; justify-content:center; font-size:22px;
+  margin-bottom:8px;
+}
+
+/* ─────────────────────────────────────────────
+   SCREEN 2 — ONBOARDING
+───────────────────────────────────────────── */
+.onboard { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 16px; text-align:center; }
+.onboard-illus { width:90px; height:90px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:38px; margin-bottom:20px; }
+.onboard-illus.m { background:var(--mauve-l); }
+.onboard-illus.t { background:var(--teal-l); }
+.onboard-illus.d { background:var(--fog2); }
+.onboard-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); line-height:1.2; margin-bottom:10px; }
+.onboard-body { font-size:11px; color:var(--ink3); line-height:1.6; margin-bottom:24px; }
+.onboard-dots { display:flex; gap:6px; justify-content:center; margin-bottom:20px; }
+.od { width:6px; height:6px; border-radius:50%; background:var(--line); }
+.od.a { background:var(--ink); width:16px; border-radius:3px; }
+.btn-full { background:var(--ink); color:#fff; font-size:11px; font-weight:600; padding:11px; border-radius:10px; text-align:center; width:100%; }
+.btn-ghost { background:transparent; color:var(--ink3); font-size:10px; padding:8px; text-align:center; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 3 — LOGIN
+───────────────────────────────────────────── */
+.login-header { padding:20px 14px 14px; }
+.login-title { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.login-sub { font-size:10px; color:var(--ink3); }
+.field { margin-bottom:10px; }
+.field-label { font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-d); margin-bottom:4px; }
+.field-input { background:var(--fog); border-radius:8px; padding:9px 11px; font-size:11px; color:var(--ink); border:1px solid var(--line); }
+.field-input.focus { border-color:var(--mauve); background:var(--white); }
+.divider-or { display:flex; align-items:center; gap:8px; margin:12px 0; }
+.divider-or span { font-size:9px; color:var(--ink3); }
+.divider-or::before, .divider-or::after { content:''; flex:1; height:1px; background:var(--line); }
+.btn-social { background:var(--fog); border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:10px; color:var(--ink2); display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 4 — FILTER SCREEN
+───────────────────────────────────────────── */
+.filter-header {
+  background:var(--white); padding:12px 14px;
+  border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.filter-title { font-size:13px; font-weight:600; color:var(--ink); }
+.filter-clear { font-size:10px; color:var(--mauve-d); font-weight:500; }
+.filter-section { padding:12px 14px 0; }
+.filter-section-label { font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.12em; color:var(--ink3); margin-bottom:8px; }
+.chip-grid { display:flex; flex-wrap:wrap; gap:5px; }
+.chip {
+  padding:5px 10px; border-radius:16px; font-size:9px; font-weight:500;
+  border:1px solid var(--line); background:var(--white); color:var(--ink2);
+  white-space:nowrap;
+}
+.chip.sel { background:var(--ink); color:#fff; border-color:var(--ink); }
+.chip.sel-m { background:var(--mauve-d); color:#fff; border-color:var(--mauve-d); }
+.chip.sel-t { background:var(--teal-d); color:#fff; border-color:var(--teal-d); }
+.filter-row { display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid var(--line); }
+.filter-row:last-child { border-bottom:none; }
+.filter-row-label { font-size:11px; color:var(--ink); }
+.filter-row-sub { font-size:9px; color:var(--ink3); margin-top:1px; }
+.toggle { width:32px; height:18px; border-radius:9px; background:var(--teal); position:relative; flex-shrink:0; }
+.toggle-thumb { width:14px; height:14px; border-radius:50%; background:#fff; position:absolute; top:2px; right:2px; }
+.toggle.off { background:var(--line); }
+.toggle.off .toggle-thumb { right:auto; left:2px; }
+.counter { display:flex; align-items:center; gap:8px; }
+.counter-btn { width:20px; height:20px; border-radius:50%; background:var(--fog); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-size:12px; color:var(--ink2); }
+.counter-btn.act { background:var(--ink); color:#fff; border-color:var(--ink); }
+.counter-val { font-size:11px; font-weight:600; color:var(--ink); min-width:16px; text-align:center; }
+.filter-footer { padding:10px 14px; background:var(--white); border-top:1px solid var(--line); }
+.results-hint { font-size:9px; color:var(--ink3); text-align:center; margin-bottom:8px; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 5 — MAP VIEW (main screen)
+───────────────────────────────────────────── */
+.map-bg {
+  flex:1; position:relative; overflow:hidden;
+  background: #E8E0D4;
+}
+/* Simulated map streets */
+.map-streets {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.25) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 20px 20px, 20px 20px;
+}
+.map-block {
+  position:absolute;
+  background: rgba(200,193,185,0.5);
+  border-radius:4px;
+}
+/* Parks */
+.map-park { background: rgba(180,210,170,0.4); border-radius:6px; }
+
+/* Venue pins */
+.map-pin {
+  position:absolute;
+  background:var(--white);
+  border-radius:20px;
+  padding:4px 8px;
+  font-size:9px; font-weight:700; color:var(--ink);
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+  display:flex; align-items:center; gap:3px;
+  white-space:nowrap;
+  cursor:pointer;
+  border:1.5px solid var(--line);
+}
+.map-pin.sel { background:var(--ink); color:#fff; border-color:var(--ink); transform:scale(1.1); }
+.map-pin.mauve { background:var(--mauve-d); color:#fff; border-color:var(--mauve-d); }
+.map-pin::after {
+  content:'';
+  position:absolute; bottom:-5px; left:50%; transform:translateX(-50%);
+  width:0; height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:5px solid var(--white);
+}
+.map-pin.sel::after { border-top-color:var(--ink); }
+.map-pin.mauve::after { border-top-color:var(--mauve-d); }
+
+/* Top search bar on map */
+.map-topbar {
+  position:absolute; top:0; left:0; right:0; z-index:10;
+  padding:8px 10px;
+  display:flex; flex-direction:column; gap:6px;
+}
+.map-search {
+  background:var(--white); border-radius:10px;
+  padding:8px 10px; display:flex; align-items:center; gap:6px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.15);
+  border:1px solid var(--line);
+}
+.map-search-txt { font-size:10px; color:var(--ink3); flex:1; }
+.map-filter-btn {
+  background:var(--ink); color:#fff;
+  border-radius:8px; padding:6px 10px;
+  font-size:9px; font-weight:600;
+  display:flex; align-items:center; gap:4px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+  white-space:nowrap; flex-shrink:0;
+}
+.active-chips { display:flex; gap:5px; overflow:hidden; }
+.active-chip {
+  background:var(--mauve-d); color:#fff;
+  border-radius:12px; padding:3px 8px; font-size:8px; font-weight:500;
+  white-space:nowrap; display:flex; align-items:center; gap:3px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.15);
+}
+.active-chip.t { background:var(--teal-d); }
+
+/* Bottom sheet */
+.bottom-sheet {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  background:var(--white);
+  border-radius:16px 16px 0 0;
+  box-shadow:0 -4px 24px rgba(0,0,0,0.12);
+  padding-bottom:0;
+}
+.bs-handle { width:32px; height:3px; border-radius:2px; background:var(--line); margin:8px auto 10px; }
+.bs-header { padding:0 12px 8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); }
+.bs-count { font-size:11px; font-weight:600; color:var(--ink); }
+.bs-sort { font-size:9px; color:var(--mauve-d); font-weight:500; display:flex; align-items:center; gap:3px; }
+
+/* Venue card in sheet */
+.venue-card { display:flex; gap:9px; padding:9px 12px; border-bottom:1px solid var(--line); }
+.venue-card:last-child { border-bottom:none; }
+.vc-img { width:52px; height:52px; border-radius:8px; flex-shrink:0; object-fit:cover; }
+.vc-img-bg { width:52px; height:52px; border-radius:8px; flex-shrink:0; }
+.vc-info { flex:1; min-width:0; }
+.vc-name { font-size:11px; font-weight:600; color:var(--ink); margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.vc-meta { font-size:9px; color:var(--ink3); margin-bottom:4px; }
+.vc-tags { display:flex; gap:3px; flex-wrap:wrap; }
+.vc-tag { font-size:7px; padding:2px 5px; border-radius:4px; font-weight:500; }
+.vc-tag.v { background:var(--teal-l); color:var(--teal-d); }
+.vc-tag.o { background:var(--mauve-l); color:var(--mauve-d); }
+.vc-tag.b { background:var(--fog2); color:var(--ink2); }
+.vc-right { display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; flex-shrink:0; }
+.vc-rating { display:flex; align-items:center; gap:2px; font-size:10px; font-weight:600; color:var(--ink); }
+.vc-rating-num { font-size:8px; color:var(--ink3); }
+.vc-dist { font-size:8px; color:var(--ink3); }
+.vc-save { font-size:14px; color:var(--mauve); }
+
+/* ─────────────────────────────────────────────
+   SCREEN 6 — MAP + SELECTED PIN CARD
+───────────────────────────────────────────── */
+.pin-popup {
+  position:absolute; bottom:0; left:0; right:0; z-index:10;
+  background:var(--white); border-radius:16px 16px 0 0;
+  box-shadow:0 -4px 24px rgba(0,0,0,0.15);
+}
+.pp-img { height:80px; width:100%; object-fit:cover; background:linear-gradient(135deg,var(--mauve-l),var(--teal-l)); flex-shrink:0; border-radius:16px 16px 0 0; }
+.pp-content { padding:10px 12px 10px; }
+.pp-name { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:2px; }
+.pp-meta { font-size:9px; color:var(--ink3); margin-bottom:6px; }
+.pp-badges { display:flex; gap:4px; margin-bottom:8px; }
+.pp-badge { font-size:8px; padding:3px 7px; border-radius:5px; font-weight:500; }
+.pp-badge.v { background:var(--teal-l); color:var(--teal-d); }
+.pp-badge.o { background:var(--mauve-l); color:var(--mauve-d); }
+.pp-cta-row { display:flex; gap:6px; }
+.pp-cta-save { flex:0; padding:8px 10px; border-radius:8px; border:1px solid var(--line); background:var(--fog); font-size:13px; display:flex; align-items:center; }
+.pp-cta-reserve { flex:1; background:var(--ink); color:#fff; border-radius:8px; padding:8px; font-size:10px; font-weight:600; text-align:center; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 7 — VENUE DETAIL
+───────────────────────────────────────────── */
+.detail-hero { height:90px; position:relative; flex-shrink:0; }
+.detail-hero-bg { width:100%; height:100%; background:linear-gradient(135deg, var(--mauve-d) 0%, var(--teal-d) 100%); position:relative; }
+.detail-back { position:absolute; top:10px; left:10px; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; font-size:12px; }
+.detail-save { position:absolute; top:10px; right:10px; width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.9); display:flex; align-items:center; justify-content:center; font-size:12px; }
+.detail-body { flex:1; overflow:hidden; padding:10px 12px; display:flex; flex-direction:column; gap:8px; }
+.detail-name { font-size:15px; font-weight:700; color:var(--ink); }
+.detail-rating-row { display:flex; align-items:center; gap:8px; }
+.star-row { color:#F59E0B; font-size:10px; }
+.detail-rating-num { font-size:10px; font-weight:600; color:var(--ink); }
+.detail-review-count { font-size:9px; color:var(--ink3); }
+.detail-meta-row { display:flex; gap:10px; font-size:9px; color:var(--ink3); align-items:center; }
+.detail-meta-item { display:flex; align-items:center; gap:3px; }
+.badge-row { display:flex; gap:4px; flex-wrap:wrap; }
+.badge { font-size:8px; padding:3px 8px; border-radius:5px; font-weight:500; }
+.badge.v { background:var(--teal-l); color:var(--teal-d); }
+.badge.o { background:var(--mauve-l); color:var(--mauve-d); }
+.badge.cap { background:var(--fog2); color:var(--ink2); }
+.detail-desc { font-size:9px; color:var(--ink3); line-height:1.5; }
+.detail-hours { display:flex; align-items:center; gap:4px; }
+.open-dot { width:6px; height:6px; border-radius:50%; background:var(--green); flex-shrink:0; }
+.hours-text { font-size:9px; color:var(--ink2); }
+.detail-cta { background:var(--mauve-d); color:#fff; border-radius:10px; padding:10px; font-size:11px; font-weight:600; text-align:center; margin-top:auto; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 8 — RESERVATION FORM
+───────────────────────────────────────────── */
+.res-header { padding:12px 14px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:8px; }
+.res-back { font-size:16px; color:var(--ink); }
+.res-header-info { }
+.res-title { font-size:13px; font-weight:600; color:var(--ink); }
+.res-venue-name { font-size:9px; color:var(--mauve-d); font-weight:500; }
+.res-body { flex:1; overflow:hidden; padding:10px 14px; display:flex; flex-direction:column; gap:8px; }
+.date-picker { background:var(--fog); border-radius:10px; padding:10px; }
+.dp-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.dp-month { font-size:11px; font-weight:600; color:var(--ink); }
+.dp-nav { font-size:10px; color:var(--mauve-d); }
+.dp-days { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; text-align:center; }
+.dp-day-label { font-size:7px; color:var(--ink3); font-family:'DM Mono',monospace; padding:2px 0; }
+.dp-day { font-size:9px; padding:4px 2px; border-radius:50%; color:var(--ink2); aspect-ratio:1; display:flex; align-items:center; justify-content:center; }
+.dp-day.dis { color:var(--line); }
+.dp-day.sel { background:var(--ink); color:#fff; border-radius:50%; }
+.dp-day.today { color:var(--mauve-d); font-weight:600; }
+.time-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:5px; }
+.time-slot { background:var(--fog); border-radius:7px; padding:6px; font-size:9px; text-align:center; color:var(--ink2); border:1px solid var(--line); }
+.time-slot.sel { background:var(--ink); color:#fff; border-color:var(--ink); }
+.time-slot.dis { color:var(--line); background:var(--fog); }
+.party-row { display:flex; align-items:center; gap:0; background:var(--fog); border-radius:10px; overflow:hidden; }
+.party-minus, .party-plus { padding:10px 14px; font-size:16px; color:var(--ink2); }
+.party-minus.act, .party-plus.act { color:var(--mauve-d); }
+.party-num { flex:1; text-align:center; font-size:16px; font-weight:700; color:var(--ink); }
+.party-label { text-align:center; font-size:8px; color:var(--ink3); margin-top:4px; }
+.notes-field { background:var(--fog); border-radius:8px; padding:8px 10px; font-size:9px; color:var(--ink3); border:1px solid var(--line); height:36px; }
+.res-footer { padding:8px 14px 10px; border-top:1px solid var(--line); }
+.res-summary { display:flex; justify-content:space-between; font-size:9px; color:var(--ink3); margin-bottom:8px; }
+.btn-reserve { background:var(--mauve-d); color:#fff; border-radius:10px; padding:11px; font-size:11px; font-weight:600; text-align:center; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 9 — CONFIRMATION
+───────────────────────────────────────────── */
+.confirm-screen { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 16px; text-align:center; gap:0; }
+.confirm-icon-wrap { width:64px; height:64px; border-radius:50%; background:var(--mauve-l); display:flex; align-items:center; justify-content:center; font-size:28px; margin-bottom:16px; }
+.confirm-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-bottom:6px; line-height:1.2; }
+.confirm-sub { font-size:10px; color:var(--ink3); line-height:1.5; margin-bottom:20px; }
+.confirm-card { background:var(--fog); border-radius:12px; padding:14px; width:100%; text-align:left; border:1px solid var(--line); margin-bottom:16px; }
+.cc-row { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--line); }
+.cc-row:last-child { border-bottom:none; }
+.cc-label { font-size:9px; color:var(--ink3); }
+.cc-val { font-size:9px; font-weight:600; color:var(--ink); }
+.confirm-cta-row { display:flex; gap:8px; width:100%; }
+.confirm-btn-ghost { flex:1; background:var(--fog); border:1px solid var(--line); border-radius:10px; padding:9px; font-size:10px; text-align:center; color:var(--ink2); }
+.confirm-btn-solid { flex:1; background:var(--ink); color:#fff; border-radius:10px; padding:9px; font-size:10px; font-weight:600; text-align:center; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 10 — SAVED / FAVOURITES
+───────────────────────────────────────────── */
+.saved-header { padding:14px 14px 10px; border-bottom:1px solid var(--line); }
+.saved-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.saved-tabs { display:flex; gap:0; }
+.saved-tab { flex:1; text-align:center; font-size:10px; color:var(--ink3); padding:6px 0; border-bottom:2px solid transparent; }
+.saved-tab.act { color:var(--ink); border-bottom-color:var(--ink); font-weight:600; }
+.saved-list { flex:1; overflow:hidden; }
+.saved-item { padding:10px 14px; border-bottom:1px solid var(--line); display:flex; gap:9px; align-items:center; }
+.si-img { width:48px; height:48px; border-radius:8px; flex-shrink:0; }
+.si-info { flex:1; }
+.si-name { font-size:11px; font-weight:600; color:var(--ink); margin-bottom:2px; }
+.si-meta { font-size:9px; color:var(--ink3); margin-bottom:4px; }
+.si-tags { display:flex; gap:3px; }
+.si-tag { font-size:7px; padding:2px 5px; border-radius:4px; }
+.si-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.si-heart { font-size:16px; color:var(--mauve); }
+.si-book { font-size:8px; color:var(--mauve-d); font-weight:600; padding:4px 8px; border:1px solid var(--mauve); border-radius:6px; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 11 — MY RESERVATIONS
+───────────────────────────────────────────── */
+.myres-header { padding:14px 14px 10px; border-bottom:1px solid var(--line); }
+.myres-title { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.res-item { padding:10px 14px; border-bottom:1px solid var(--line); }
+.ri-date-chip { display:inline-block; font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:var(--mauve-d); background:var(--mauve-l); padding:2px 7px; border-radius:4px; margin-bottom:6px; }
+.ri-card { background:var(--fog); border-radius:10px; padding:9px; border:1px solid var(--line); }
+.ri-top { display:flex; gap:8px; margin-bottom:6px; }
+.ri-img { width:40px; height:40px; border-radius:6px; flex-shrink:0; }
+.ri-info { flex:1; }
+.ri-name { font-size:11px; font-weight:600; color:var(--ink); margin-bottom:2px; }
+.ri-meta { font-size:9px; color:var(--ink3); }
+.ri-details { display:flex; gap:0; border-top:1px solid var(--line); padding-top:6px; margin-top:0; }
+.ri-detail { flex:1; text-align:center; }
+.ri-detail-label { font-size:7px; font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink3); margin-bottom:2px; }
+.ri-detail-val { font-size:10px; font-weight:600; color:var(--ink); }
+.ri-detail + .ri-detail { border-left:1px solid var(--line); }
+.ri-actions { display:flex; gap:6px; margin-top:6px; }
+.ri-action { flex:1; text-align:center; font-size:9px; padding:5px; border-radius:6px; }
+.ri-action.view { background:var(--ink); color:#fff; font-weight:600; }
+.ri-action.cancel { background:var(--fog2); color:var(--ink3); border:1px solid var(--line); }
+.ri-past-chip { display:inline-block; font-size:8px; color:var(--ink3); background:var(--fog2); padding:2px 7px; border-radius:4px; margin-bottom:6px; font-family:'DM Mono',monospace; text-transform:uppercase; letter-spacing:0.08em; }
+
+/* ─────────────────────────────────────────────
+   SCREEN 12 — PROFILE
+───────────────────────────────────────────── */
+.profile-header { background:var(--ink); padding:20px 14px 16px; }
+.profile-avatar { width:52px; height:52px; border-radius:50%; background:var(--mauve); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:900; color:#fff; margin-bottom:10px; }
+.profile-name { font-size:15px; font-weight:700; color:#fff; margin-bottom:2px; }
+.profile-email { font-size:9px; color:rgba(255,255,255,0.5); font-family:'DM Mono',monospace; }
+.profile-stats { display:flex; gap:0; background:rgba(255,255,255,0.06); border-radius:10px; margin-top:12px; overflow:hidden; }
+.profile-stat { flex:1; padding:8px 0; text-align:center; }
+.profile-stat + .profile-stat { border-left:1px solid rgba(255,255,255,0.08); }
+.ps-num { font-size:16px; font-weight:700; color:#fff; }
+.ps-label { font-size:8px; color:rgba(255,255,255,0.4); font-family:'DM Mono',monospace; }
+.menu-section { padding:8px 14px 0; }
+.menu-section-label { font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink3); margin-bottom:6px; }
+.menu-item { display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+.menu-item:last-child { border-bottom:none; }
+.menu-icon { width:28px; height:28px; border-radius:7px; background:var(--fog2); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.menu-label { font-size:11px; color:var(--ink); flex:1; }
+.menu-arrow { font-size:10px; color:var(--line); }
+.menu-badge { background:var(--mauve-d); color:#fff; font-size:8px; padding:1px 5px; border-radius:8px; font-weight:600; }
+
+/* ─────────────────────────────────────────────
+   GRADIENT HELPERS FOR VENUE IMAGES
+───────────────────────────────────────────── */
+.img-a { background: linear-gradient(135deg, #D4E3E4 0%, #8A9FA1 100%); }
+.img-b { background: linear-gradient(135deg, #E8D0E7 0%, #BF8DBC 100%); }
+.img-c { background: linear-gradient(135deg, #F5E6D0 0%, #D4A574 100%); }
+.img-d { background: linear-gradient(135deg, #D0E8D4 0%, #74B47A 100%); }
+.img-e { background: linear-gradient(135deg, #E0D0E8 0%, #9B7AB4 100%); }
+
+</style>
+</head>
+<body>
+
+<div class="canvas-header">
+  <div>
+    <div class="canvas-title">BAR<span>.</span>BOOK</div>
+    <div class="canvas-subtitle">Figma frames reference · iOS Mobile · 390×844px base</div>
+  </div>
+  <div class="frame-count">12 frames · Color palette: #BF8DBC · #242424 · #557174</div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FLOW 1 — LAUNCH
+═══════════════════════════════════════ -->
+<div class="flow-section">
+  <div class="flow-label">Flow 01 — Launch & Onboarding</div>
+  <div class="frames-row">
+
+    <!-- F01 SPLASH -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-01</div>
+      <div class="phone" style="background:var(--ink)">
+        <div class="sb dark"><span class="sb-time light">12:30</span><span class="sb-icons light">▲▼ ■</span></div>
+        <div class="splash">
+          <div class="splash-pin">📍</div>
+          <div class="splash-logo">BAR<span>.</span>BOOK</div>
+          <div class="splash-tagline">Find · Reserve · Enjoy</div>
+        </div>
+      </div>
+      <div class="frame-name">Splash Screen</div>
+    </div>
+
+    <!-- F02 ONBOARDING 1 -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-02</div>
+      <div class="phone">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="onboard">
+          <div class="onboard-illus m">📍</div>
+          <div class="onboard-title">Find your perfect spot</div>
+          <div class="onboard-body">Search cafés, restaurants and bars with filters for what really matters to you</div>
+          <div class="onboard-dots"><div class="od a"></div><div class="od"></div><div class="od"></div></div>
+          <div style="width:100%">
+            <div class="btn-full">Get started</div>
+            <div class="btn-ghost">Skip</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Onboarding 1/3</div>
+    </div>
+
+    <!-- F03 ONBOARDING 2 -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-03</div>
+      <div class="phone">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="onboard">
+          <div class="onboard-illus t">📅</div>
+          <div class="onboard-title">Reserve, don't wait</div>
+          <div class="onboard-body">Book a table for your group in seconds. Confirmation is instant — no calls needed</div>
+          <div class="onboard-dots"><div class="od"></div><div class="od a"></div><div class="od"></div></div>
+          <div style="width:100%">
+            <div class="btn-full">Next</div>
+            <div class="btn-ghost">Skip</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Onboarding 2/3</div>
+    </div>
+
+    <!-- F04 ONBOARDING 3 -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-04</div>
+      <div class="phone">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="onboard">
+          <div class="onboard-illus d">♡</div>
+          <div class="onboard-title">Save what you love</div>
+          <div class="onboard-body">Bookmark your favourite venues and come back whenever you're ready to book again</div>
+          <div class="onboard-dots"><div class="od"></div><div class="od"></div><div class="od a"></div></div>
+          <div style="width:100%">
+            <div class="btn-full">Start exploring</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Onboarding 3/3</div>
+    </div>
+
+    <!-- F05 LOGIN -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-05</div>
+      <div class="phone">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="login-header">
+            <div class="login-title">Welcome back</div>
+            <div class="login-sub">Log in to BAR.BOOK</div>
+          </div>
+          <div class="px" style="margin-top:14px;">
+            <div class="field">
+              <div class="field-label">Email</div>
+              <div class="field-input focus">miriam@email.com</div>
+            </div>
+            <div class="field">
+              <div class="field-label">Password</div>
+              <div class="field-input">••••••••</div>
+            </div>
+            <div style="text-align:right; font-size:9px; color:var(--mauve-d); margin-bottom:12px;">Forgot password?</div>
+            <div class="btn-full" style="margin-bottom:10px;">Log in</div>
+            <div class="divider-or"><span>or continue with</span></div>
+            <div class="btn-social">🍎 &nbsp;Continue with Apple</div>
+            <div class="btn-social">🔵 &nbsp;Continue with Google</div>
+            <div style="text-align:center; font-size:9px; color:var(--ink3); margin-top:10px;">Don't have an account? <span style="color:var(--mauve-d); font-weight:600;">Sign up</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Login</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FLOW 2 — FILTER + MAP (CORE FLOW)
+═══════════════════════════════════════ -->
+<div class="flow-section">
+  <div class="flow-label">Flow 02 — Filter → Map Discovery (Core)</div>
+  <div class="frames-row">
+
+    <!-- F06 FILTER SCREEN -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-06</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="filter-header">
+            <div style="font-size:16px; color:var(--ink3);">✕</div>
+            <div class="filter-title">Filters</div>
+            <div class="filter-clear">Clear all</div>
+          </div>
+
+          <div style="flex:1; overflow:hidden; display:flex; flex-direction:column; gap:0;">
+            <!-- Venue type -->
+            <div class="filter-section">
+              <div class="filter-section-label">Venue type</div>
+              <div class="chip-grid">
+                <div class="chip sel">☕ Café</div>
+                <div class="chip">🍔 Burger</div>
+                <div class="chip sel-m">🍸 Bar</div>
+                <div class="chip">🍽 Restaurant</div>
+                <div class="chip">🌿 Vegan spot</div>
+              </div>
+            </div>
+
+            <!-- Dietary -->
+            <div class="filter-section" style="margin-top:10px;">
+              <div class="filter-section-label">Dietary options</div>
+              <div class="chip-grid">
+                <div class="chip sel-t">🌿 Vegan</div>
+                <div class="chip sel-t">🥗 Vegetarian</div>
+                <div class="chip">🌾 Gluten-free</div>
+                <div class="chip">🕌 Halal</div>
+              </div>
+            </div>
+
+            <!-- Toggles -->
+            <div class="filter-section" style="margin-top:10px;">
+              <div class="filter-section-label">Amenities</div>
+              <div class="filter-row">
+                <div>
+                  <div class="filter-row-label">Outdoor seating</div>
+                  <div class="filter-row-sub">Terraces & patios</div>
+                </div>
+                <div class="toggle"><div class="toggle-thumb"></div></div>
+              </div>
+              <div class="filter-row">
+                <div>
+                  <div class="filter-row-label">Open now</div>
+                  <div class="filter-row-sub">12:30 PM</div>
+                </div>
+                <div class="toggle"><div class="toggle-thumb"></div></div>
+              </div>
+              <div class="filter-row">
+                <div>
+                  <div class="filter-row-label">Bike parking</div>
+                  <div class="filter-row-sub">Secure bicycle spots</div>
+                </div>
+                <div class="toggle off"><div class="toggle-thumb"></div></div>
+              </div>
+              <div class="filter-row">
+                <div>
+                  <div class="filter-row-label">Pet friendly</div>
+                </div>
+                <div class="toggle off"><div class="toggle-thumb"></div></div>
+              </div>
+            </div>
+
+            <!-- Party size -->
+            <div class="filter-section" style="margin-top:10px;">
+              <div class="filter-section-label">Party size</div>
+              <div class="filter-row" style="border:none;">
+                <div class="filter-row-label">Number of guests</div>
+                <div class="counter">
+                  <div class="counter-btn">−</div>
+                  <div class="counter-val">8</div>
+                  <div class="counter-btn act">+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-footer">
+            <div class="results-hint">24 venues match your filters</div>
+            <div class="btn-full">Show on map</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Filter Screen</div>
+    </div>
+
+    <!-- F07 MAP VIEW — RESULTS -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-07</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen" style="position:relative;">
+          <!-- Map -->
+          <div class="map-bg" style="flex:1; min-height:0;">
+            <div class="map-streets"></div>
+
+            <!-- Map blocks for visual city feel -->
+            <div class="map-block" style="width:60px;height:40px;top:60px;left:20px;"></div>
+            <div class="map-block" style="width:45px;height:55px;top:40px;left:90px;"></div>
+            <div class="map-block" style="width:70px;height:35px;top:80px;right:15px;"></div>
+            <div class="map-park" style="width:55px;height:50px;top:120px;left:55px;"></div>
+            <div class="map-block" style="width:40px;height:40px;top:140px;right:30px;"></div>
+            <div class="map-block" style="width:50px;height:30px;top:30px;right:40px;"></div>
+            <div class="map-block" style="width:35px;height:45px;top:180px;left:15px;"></div>
+
+            <!-- Venue pins -->
+            <div class="map-pin sel" style="top:65px;left:30px;">★ 4.8 · Feca</div>
+            <div class="map-pin" style="top:45px;right:18px;">★ 4.5 · Amber</div>
+            <div class="map-pin mauve" style="top:130px;right:22px;">★ 4.7 · Verde</div>
+            <div class="map-pin" style="top:155px;left:55px;">★ 4.3 · Lume</div>
+            <div class="map-pin" style="top:100px;left:115px;">★ 4.6 · Roots</div>
+
+            <!-- Top bar -->
+            <div class="map-topbar">
+              <div class="map-search">
+                <span style="font-size:11px;">🔍</span>
+                <span class="map-search-txt">Palermo · vegan · outdoor · 8 guests</span>
+                <div class="map-filter-btn">⚙ Filters <span style="background:var(--mauve);border-radius:50%;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;font-size:8px;">3</span></div>
+              </div>
+              <div class="active-chips">
+                <div class="active-chip">🌿 Vegan ×</div>
+                <div class="active-chip t">🌳 Outdoor ×</div>
+                <div class="active-chip">👥 8 guests ×</div>
+              </div>
+            </div>
+
+            <!-- Bottom sheet -->
+            <div class="bottom-sheet">
+              <div class="bs-handle"></div>
+              <div class="bs-header">
+                <div class="bs-count">24 venues found</div>
+                <div class="bs-sort">Sort: Nearest ▾</div>
+              </div>
+
+              <!-- Card 1 -->
+              <div class="venue-card">
+                <div class="vc-img-bg img-a" style="width:52px;height:52px;border-radius:8px;flex-shrink:0;"></div>
+                <div class="vc-info">
+                  <div class="vc-name">Cafetería Feca</div>
+                  <div class="vc-meta">Café · Palermo · 0.3km · Open</div>
+                  <div class="vc-tags">
+                    <div class="vc-tag v">Vegan ✓</div>
+                    <div class="vc-tag o">Outdoor ✓</div>
+                    <div class="vc-tag b">Up to 12</div>
+                  </div>
+                </div>
+                <div class="vc-right">
+                  <div class="vc-rating">★ <span>4.8</span></div>
+                  <div class="vc-dist">0.3km</div>
+                  <div class="vc-save">♡</div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="venue-card">
+                <div class="vc-img-bg img-e" style="width:52px;height:52px;border-radius:8px;flex-shrink:0;"></div>
+                <div class="vc-info">
+                  <div class="vc-name">Roots Kitchen</div>
+                  <div class="vc-meta">Vegan · Soho · 0.6km · Open</div>
+                  <div class="vc-tags">
+                    <div class="vc-tag v">Vegan ✓</div>
+                    <div class="vc-tag b">Up to 20</div>
+                  </div>
+                </div>
+                <div class="vc-right">
+                  <div class="vc-rating">★ <span>4.6</span></div>
+                  <div class="vc-dist">0.6km</div>
+                  <div class="vc-save" style="color:var(--mauve-d);">♥</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item"><div class="bnav-icon active">📍</div><div class="bnav-label active">Discover</div></div>
+          <div class="bnav-item"><div class="bnav-icon">📅</div><div class="bnav-label">Bookings</div></div>
+          <div class="bnav-item"><div class="bnav-icon">♡</div><div class="bnav-label">Saved</div></div>
+          <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="frame-name">Map View — Results</div>
+    </div>
+
+    <!-- F08 MAP — PIN SELECTED -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-08</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen" style="position:relative;">
+          <div class="map-bg" style="flex:1; min-height:0;">
+            <div class="map-streets"></div>
+            <div class="map-block" style="width:60px;height:40px;top:60px;left:20px;"></div>
+            <div class="map-block" style="width:45px;height:55px;top:40px;left:90px;"></div>
+            <div class="map-block" style="width:70px;height:35px;top:80px;right:15px;"></div>
+            <div class="map-park" style="width:55px;height:50px;top:120px;left:55px;"></div>
+            <div class="map-block" style="width:40px;height:40px;top:140px;right:30px;"></div>
+
+            <div class="map-pin sel" style="top:65px;left:30px;">★ 4.8 · Feca</div>
+            <div class="map-pin" style="top:45px;right:18px; opacity:0.5;">★ 4.5 · Amber</div>
+            <div class="map-pin" style="top:130px;right:22px; opacity:0.5;">★ 4.7 · Verde</div>
+            <div class="map-pin" style="top:155px;left:55px; opacity:0.5;">★ 4.3 · Lume</div>
+
+            <div class="map-topbar">
+              <div class="map-search">
+                <span style="font-size:11px;">←</span>
+                <span class="map-search-txt" style="color:var(--ink);">Cafetería Feca</span>
+                <div class="map-filter-btn">⚙ 3</div>
+              </div>
+            </div>
+
+            <div class="pin-popup">
+              <div class="pp-img"></div>
+              <div class="pp-content">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:3px;">
+                  <div class="pp-name">Cafetería Feca</div>
+                  <div style="font-size:10px; color:#F59E0B;">★ 4.8 <span style="color:var(--ink3);">(124)</span></div>
+                </div>
+                <div class="pp-meta">Café · Palermo · Open until 20:00 · 0.3km away</div>
+                <div class="pp-badges">
+                  <span class="pp-badge v">🌿 Vegan menu</span>
+                  <span class="pp-badge o">🌳 Outdoor seating</span>
+                  <span class="pp-badge" style="background:var(--fog2);color:var(--ink2);">👥 Up to 12</span>
+                </div>
+                <div class="pp-cta-row">
+                  <div class="pp-cta-save">♡</div>
+                  <div class="pp-cta-reserve">Reserve a table →</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item"><div class="bnav-icon active">📍</div><div class="bnav-label active">Discover</div></div>
+          <div class="bnav-item"><div class="bnav-icon">📅</div><div class="bnav-label">Bookings</div></div>
+          <div class="bnav-item"><div class="bnav-icon">♡</div><div class="bnav-label">Saved</div></div>
+          <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="frame-name">Map — Pin Selected</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FLOW 3 — VENUE DETAIL + RESERVATION
+═══════════════════════════════════════ -->
+<div class="flow-section">
+  <div class="flow-label">Flow 03 — Venue Detail & Reservation</div>
+  <div class="frames-row">
+
+    <!-- F09 VENUE DETAIL -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-09</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="detail-hero">
+            <div class="detail-hero-bg"></div>
+            <div class="detail-back">←</div>
+            <div class="detail-save">♡</div>
+          </div>
+          <div class="detail-body">
+            <div class="detail-name">Cafetería Feca</div>
+            <div class="detail-rating-row">
+              <div class="star-row">★★★★★</div>
+              <div class="detail-rating-num">4.8</div>
+              <div class="detail-review-count">(124 reviews)</div>
+            </div>
+            <div class="badge-row">
+              <span class="badge v">🌿 Vegan</span>
+              <span class="badge o">🌳 Outdoor</span>
+              <span class="badge cap">👥 Max 12</span>
+              <span class="badge" style="background:var(--fog2);color:var(--ink2);">🚲 Bike parking</span>
+            </div>
+            <div class="detail-meta-row">
+              <div class="detail-meta-item">📍 <span>Palermo, 0.3km</span></div>
+              <div class="detail-meta-item">💳 <span>Cash · Card</span></div>
+            </div>
+            <div class="detail-hours">
+              <div class="open-dot"></div>
+              <div class="hours-text">Open · closes at 20:00</div>
+            </div>
+            <div class="detail-desc">Vintage café specialising in artisan coffee and homemade pastries. Features a beautiful internal patio with plants and bicycle hooks at every table.</div>
+
+            <!-- Tabs: Menu / Photos / Info -->
+            <div style="display:flex; border-bottom:1px solid var(--line); gap:0;">
+              <div style="flex:1; text-align:center; font-size:10px; font-weight:600; color:var(--ink); padding:6px 0; border-bottom:2px solid var(--ink);">Menu</div>
+              <div style="flex:1; text-align:center; font-size:10px; color:var(--ink3); padding:6px 0;">Photos</div>
+              <div style="flex:1; text-align:center; font-size:10px; color:var(--ink3); padding:6px 0;">Info</div>
+            </div>
+            <!-- Mini menu preview -->
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:var(--teal-d);">Vegan options</div>
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--ink);">
+                <span>Açaí bowl</span><span style="color:var(--ink2);">$850</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--ink);">
+                <span>Avocado toast</span><span style="color:var(--ink2);">$950</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--ink3);">
+                <span style="color:var(--mauve-d); font-size:9px;">+ 12 more items</span>
+              </div>
+            </div>
+
+            <div class="detail-cta">Reserve a table</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Venue Detail</div>
+    </div>
+
+    <!-- F10 RESERVATION FORM -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-10</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="res-header">
+            <div class="res-back">←</div>
+            <div class="res-header-info">
+              <div class="res-title">Reserve a table</div>
+              <div class="res-venue-name">Cafetería Feca</div>
+            </div>
+          </div>
+          <div class="res-body">
+            <!-- Date picker -->
+            <div class="date-picker">
+              <div class="dp-header">
+                <div class="dp-nav">‹</div>
+                <div class="dp-month">November 2025</div>
+                <div class="dp-nav">›</div>
+              </div>
+              <div class="dp-days">
+                <div class="dp-day-label">M</div><div class="dp-day-label">T</div><div class="dp-day-label">W</div><div class="dp-day-label">T</div><div class="dp-day-label">F</div><div class="dp-day-label">S</div><div class="dp-day-label">S</div>
+                <div class="dp-day dis">·</div><div class="dp-day dis">·</div><div class="dp-day dis">·</div><div class="dp-day dis">·</div><div class="dp-day dis">1</div><div class="dp-day">2</div><div class="dp-day">3</div>
+                <div class="dp-day">4</div><div class="dp-day">5</div><div class="dp-day">6</div><div class="dp-day">7</div><div class="dp-day today">8</div><div class="dp-day">9</div><div class="dp-day">10</div>
+                <div class="dp-day">11</div><div class="dp-day">12</div><div class="dp-day">13</div><div class="dp-day">14</div><div class="dp-day sel">15</div><div class="dp-day">16</div><div class="dp-day">17</div>
+                <div class="dp-day">18</div><div class="dp-day">19</div><div class="dp-day">20</div><div class="dp-day">21</div><div class="dp-day">22</div><div class="dp-day">23</div><div class="dp-day">24</div>
+                <div class="dp-day">25</div><div class="dp-day">26</div><div class="dp-day">27</div><div class="dp-day">28</div><div class="dp-day">29</div><div class="dp-day">30</div><div class="dp-day dis">·</div>
+              </div>
+            </div>
+
+            <!-- Time slots -->
+            <div>
+              <div class="filter-section-label" style="margin-bottom:6px;">Time</div>
+              <div class="time-grid">
+                <div class="time-slot dis">12:00</div>
+                <div class="time-slot dis">12:30</div>
+                <div class="time-slot">13:00</div>
+                <div class="time-slot">16:00</div>
+                <div class="time-slot sel">16:30</div>
+                <div class="time-slot">17:00</div>
+                <div class="time-slot">17:30</div>
+                <div class="time-slot">18:00</div>
+                <div class="time-slot">18:30</div>
+              </div>
+            </div>
+
+            <!-- Party size -->
+            <div>
+              <div class="filter-section-label" style="margin-bottom:4px;">Guests</div>
+              <div class="party-row">
+                <div class="party-minus">−</div>
+                <div>
+                  <div class="party-num">8</div>
+                  <div class="party-label">guests</div>
+                </div>
+                <div class="party-plus act">+</div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div>
+              <div class="filter-section-label" style="margin-bottom:4px;">Special notes (optional)</div>
+              <div class="notes-field">Birthday celebration 🎂</div>
+            </div>
+
+          </div>
+          <div class="res-footer">
+            <div class="res-summary">
+              <span>Sat Nov 15 · 16:30 · 8 guests</span>
+              <span>Free cancellation</span>
+            </div>
+            <div class="btn-reserve">Confirm reservation</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Reservation Form</div>
+    </div>
+
+    <!-- F11 CONFIRMATION -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-11</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="confirm-screen">
+            <div class="confirm-icon-wrap">🎉</div>
+            <div class="confirm-title">You're all set!</div>
+            <div class="confirm-sub">Your table at Cafetería Feca has been reserved. We'll send a reminder the day before.</div>
+            <div class="confirm-card">
+              <div class="cc-row">
+                <span class="cc-label">Venue</span>
+                <span class="cc-val">Cafetería Feca</span>
+              </div>
+              <div class="cc-row">
+                <span class="cc-label">Date</span>
+                <span class="cc-val">Sat, Nov 15 2025</span>
+              </div>
+              <div class="cc-row">
+                <span class="cc-label">Time</span>
+                <span class="cc-val">4:30 PM</span>
+              </div>
+              <div class="cc-row">
+                <span class="cc-label">Guests</span>
+                <span class="cc-val">8 people</span>
+              </div>
+              <div class="cc-row">
+                <span class="cc-label">Booking ref.</span>
+                <span class="cc-val" style="font-family:'DM Mono',monospace; font-size:8px;">#BB-2025-8841</span>
+              </div>
+            </div>
+            <div class="confirm-cta-row">
+              <div class="confirm-btn-ghost">Save venue ♡</div>
+              <div class="confirm-btn-solid">View booking</div>
+            </div>
+            <div style="margin-top:12px; font-size:9px; color:var(--mauve-d); font-weight:500;">← Back to map</div>
+          </div>
+        </div>
+      </div>
+      <div class="frame-name">Confirmation</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     FLOW 4 — MY SPACE (Saved + Bookings + Profile)
+═══════════════════════════════════════ -->
+<div class="flow-section">
+  <div class="flow-label">Flow 04 — My Space</div>
+  <div class="frames-row">
+
+    <!-- F12 SAVED -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-12</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="saved-header">
+            <div class="saved-title">Saved</div>
+            <div class="saved-tabs">
+              <div class="saved-tab act">All (6)</div>
+              <div class="saved-tab">Cafés</div>
+              <div class="saved-tab">Bars</div>
+              <div class="saved-tab">Vegan</div>
+            </div>
+          </div>
+          <div class="saved-list">
+            <div class="saved-item">
+              <div class="si-img img-a" style="width:48px;height:48px;border-radius:8px;flex-shrink:0;"></div>
+              <div class="si-info">
+                <div class="si-name">Cafetería Feca</div>
+                <div class="si-meta">Café · Palermo · ★ 4.8</div>
+                <div class="si-tags">
+                  <span class="si-tag v" style="background:var(--teal-l);color:var(--teal-d);">Vegan</span>
+                  <span class="si-tag o" style="background:var(--mauve-l);color:var(--mauve-d);">Outdoor</span>
+                </div>
+              </div>
+              <div class="si-right">
+                <div class="si-heart">♥</div>
+                <div class="si-book">Book</div>
+              </div>
+            </div>
+            <div class="saved-item">
+              <div class="si-img img-b" style="width:48px;height:48px;border-radius:8px;flex-shrink:0;"></div>
+              <div class="si-info">
+                <div class="si-name">Amber Bar</div>
+                <div class="si-meta">Bar · Villa Urquiza · ★ 4.5</div>
+                <div class="si-tags">
+                  <span class="si-tag o" style="background:var(--mauve-l);color:var(--mauve-d);">Outdoor</span>
+                  <span class="si-tag" style="background:var(--fog2);color:var(--ink2);">Craft beer</span>
+                </div>
+              </div>
+              <div class="si-right">
+                <div class="si-heart">♥</div>
+                <div class="si-book">Book</div>
+              </div>
+            </div>
+            <div class="saved-item">
+              <div class="si-img img-d" style="width:48px;height:48px;border-radius:8px;flex-shrink:0;"></div>
+              <div class="si-info">
+                <div class="si-name">Roots Kitchen</div>
+                <div class="si-meta">Vegan · Soho · ★ 4.7</div>
+                <div class="si-tags">
+                  <span class="si-tag v" style="background:var(--teal-l);color:var(--teal-d);">Vegan</span>
+                </div>
+              </div>
+              <div class="si-right">
+                <div class="si-heart">♥</div>
+                <div class="si-book">Book</div>
+              </div>
+            </div>
+            <div class="saved-item">
+              <div class="si-img img-c" style="width:48px;height:48px;border-radius:8px;flex-shrink:0;"></div>
+              <div class="si-info">
+                <div class="si-name">Lume Restó</div>
+                <div class="si-meta">Restaurant · San Telmo · ★ 4.3</div>
+                <div class="si-tags">
+                  <span class="si-tag" style="background:var(--fog2);color:var(--ink2);">Veggie options</span>
+                </div>
+              </div>
+              <div class="si-right">
+                <div class="si-heart">♥</div>
+                <div class="si-book">Book</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item"><div class="bnav-icon">📍</div><div class="bnav-label">Discover</div></div>
+          <div class="bnav-item"><div class="bnav-icon">📅</div><div class="bnav-label">Bookings</div></div>
+          <div class="bnav-item"><div class="bnav-icon active">♡</div><div class="bnav-label active">Saved</div></div>
+          <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="frame-name">Saved / Favourites</div>
+    </div>
+
+    <!-- F13 MY RESERVATIONS -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-13</div>
+      <div class="phone tall">
+        <div class="sb"><span class="sb-time">12:30</span><span class="sb-icons">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="myres-header">
+            <div class="myres-title">My Bookings</div>
+            <div class="saved-tabs">
+              <div class="saved-tab act">Upcoming (1)</div>
+              <div class="saved-tab">Past (4)</div>
+            </div>
+          </div>
+
+          <!-- Upcoming -->
+          <div class="res-item">
+            <div class="ri-date-chip">Sat, Nov 15 · 4:30 PM</div>
+            <div class="ri-card">
+              <div class="ri-top">
+                <div class="ri-img img-a" style="width:40px;height:40px;border-radius:6px;flex-shrink:0;"></div>
+                <div class="ri-info">
+                  <div class="ri-name">Cafetería Feca</div>
+                  <div class="ri-meta">Café · Palermo</div>
+                </div>
+                <div style="font-size:8px; background:var(--teal-l); color:var(--teal-d); padding:2px 7px; border-radius:4px; font-weight:600; height:fit-content; white-space:nowrap;">Confirmed</div>
+              </div>
+              <div class="ri-details">
+                <div class="ri-detail">
+                  <div class="ri-detail-label">Date</div>
+                  <div class="ri-detail-val">Nov 15</div>
+                </div>
+                <div class="ri-detail">
+                  <div class="ri-detail-label">Time</div>
+                  <div class="ri-detail-val">4:30 PM</div>
+                </div>
+                <div class="ri-detail">
+                  <div class="ri-detail-label">Guests</div>
+                  <div class="ri-detail-val">8</div>
+                </div>
+              </div>
+              <div class="ri-actions">
+                <div class="ri-action view">View details</div>
+                <div class="ri-action cancel">Cancel</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past header -->
+          <div style="padding:8px 14px 4px; font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink3); border-top:1px solid var(--line);">Past</div>
+
+          <!-- Past item -->
+          <div class="res-item" style="padding:6px 14px;">
+            <div class="ri-past-chip">Fri, Oct 4 · 7:00 PM</div>
+            <div class="ri-card">
+              <div class="ri-top">
+                <div class="ri-img img-b" style="width:36px;height:36px;border-radius:6px;flex-shrink:0;"></div>
+                <div class="ri-info">
+                  <div class="ri-name">Amber Bar</div>
+                  <div class="ri-meta">Bar · Villa Urquiza · 6 guests</div>
+                </div>
+                <div style="font-size:8px; background:var(--fog2); color:var(--ink3); padding:2px 7px; border-radius:4px; height:fit-content;">Past</div>
+              </div>
+              <div class="ri-actions" style="margin-top:6px;">
+                <div class="ri-action" style="background:var(--fog2);color:var(--ink2);border-radius:6px;padding:5px;font-size:9px;text-align:center;border:1px solid var(--line);">Leave a review</div>
+                <div class="ri-action view" style="font-size:9px;">Book again</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="bnav">
+          <div class="bnav-item"><div class="bnav-icon">📍</div><div class="bnav-label">Discover</div></div>
+          <div class="bnav-item"><div class="bnav-icon active">📅</div><div class="bnav-label active">Bookings</div></div>
+          <div class="bnav-item"><div class="bnav-icon">♡</div><div class="bnav-label">Saved</div></div>
+          <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+        </div>
+      </div>
+      <div class="frame-name">My Bookings</div>
+    </div>
+
+    <!-- F14 PROFILE -->
+    <div class="frame-wrap">
+      <div class="frame-num">F-14</div>
+      <div class="phone tall">
+        <div class="sb dark"><span class="sb-time light">12:30</span><span class="sb-icons light">▲▼ ■</span></div>
+        <div class="screen">
+          <div class="profile-header">
+            <div class="profile-avatar">M</div>
+            <div class="profile-name">Miriam Costa</div>
+            <div class="profile-email">miriam@email.com</div>
+            <div class="profile-stats">
+              <div class="profile-stat"><div class="ps-num">6</div><div class="ps-label">Saved</div></div>
+              <div class="profile-stat"><div class="ps-num">5</div><div class="ps-label">Bookings</div></div>
+              <div class="profile-stat"><div class="ps-num">3</div><div class="ps-label">Reviews</div></div>
+            </div>
+          </div>
+
+          <div style="flex:1; overflow:hidden;">
+            <div class="menu-section">
+              <div class="menu-section-label">Account</div>
+              <div class="menu-item">
+                <div class="menu-icon">👤</div>
+                <div class="menu-label">Personal information</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon">🔔</div>
+                <div class="menu-label">Notifications</div>
+                <div class="menu-badge">2</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon">🌿</div>
+                <div class="menu-label">Dietary preferences</div>
+                <div class="menu-arrow">›</div>
+              </div>
+            </div>
+            <div class="menu-section" style="margin-top:8px;">
+              <div class="menu-section-label">Support</div>
+              <div class="menu-item">
+                <div class="menu-icon">❓</div>
+                <div class="menu-label">Help & FAQ</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon">⭐</div>
+                <div class="menu-label">Rate BAR.BOOK</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon" style="background:rgba(239,68,68,0.1);">🚪</div>
+                <div class="menu-label" style="color:var(--red);">Log out</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bnav">
+          <div class="bnav-item"><div class="bnav-icon">📍</div><div class="bnav-label">Discover</div></div>
+          <div class="bnav-item"><div class="bnav-icon">📅</div><div class="bnav-label">Bookings</div></div>
+          <div class="bnav-item"><div class="bnav-icon">♡</div><div class="bnav-label">Saved</div></div>
+          <div class="bnav-item"><div class="bnav-icon active">👤</div><div class="bnav-label active">Profile</div></div>
+        </div>
+      </div>
+      <div class="frame-name">Profile</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:32px; margin-top:16px; display:flex; gap:48px; flex-wrap:wrap;">
+  <div>
+    <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.25); margin-bottom:12px;">Color tokens</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:14px;border-radius:3px;background:#BF8DBC;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);">#BF8DBC Mauve</span></div>
+      <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:14px;border-radius:3px;background:#8A5E87;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);">#8A5E87 Mauve Dark</span></div>
+      <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:14px;border-radius:3px;background:#242424;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);">#242424 Ink</span></div>
+      <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:14px;border-radius:3px;background:#557174;"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);">#557174 Teal</span></div>
+      <div style="display:flex; align-items:center; gap:6px;"><div style="width:14px;height:14px;border-radius:3px;background:#F5F2F0;border:1px solid rgba(255,255,255,0.1)"></div><span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.4);">#F5F2F0 Fog</span></div>
+    </div>
+  </div>
+  <div>
+    <div style="font-family:'DM Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:0.12em; color:rgba(255,255,255,0.25); margin-bottom:12px;">Frame index</div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:3px 32px;">
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-01 Splash</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-02/03/04 Onboarding</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-05 Login</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-06 Filter Screen</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-07 Map + Results</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-08 Map + Pin Selected</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-09 Venue Detail</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-10 Reservation Form</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-11 Confirmation</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-12 Saved</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-13 My Bookings</span>
+      <span style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,0.3);">F-14 Profile</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
